@@ -1,0 +1,232 @@
+table {
+  width: 100%;
+}
+
+th {
+  text-align: center;
+
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+tr {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+td {
+  text-align: center;
+}
+.category h2 {
+  color: #a68264;
+  font-family: Playfair Display;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42.66px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+td .actions {
+  margin: auto;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+
+td .actions div {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+.data {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  letter-spacing: 0.05em;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+main {
+  padding: 5%;
+}
+
+.checkout-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.checkout-form form {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  flex: 1 1 300px;
+
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(2, 2fr);
+  gap: 20px;
+}
+
+.checkout-cart h2 {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+.checkout-form form .block h1 {
+  font-family: Playfair Display;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42.66px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: #fcf8f2;
+  color: #6b4424;
+}
+.form-group input::placeholder {
+  color: #c7a992;
+}
+
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.checkout {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+.checkout .content {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  width: 40%;
+}
+#checkout {
+  height: 30px;
+  border: 1px solid #c7a992;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #987253;
+}
+.price {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.price .text {
+  font-family: Montserrat;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.63px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+#checkout-price {
+  font-family: Montserrat;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: right;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .checkout-form form {
+    display: flex;
+    flex-direction: column;
+  }
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead {
+    display: none; /* Скрываем заголовки */
+  }
+
+  tr {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #fff;
+  }
+
+  td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #a68264;
+  }
+}

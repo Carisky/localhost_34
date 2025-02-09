@@ -1,0 +1,150 @@
+.contact-us{
+    height: 50vh;
+    padding: 10%;
+}
+
+.contact-us main{
+    height: 100%;
+    display: flex;
+
+}
+
+.contact-us main .left{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+}
+.contact-us main .left .title{
+    display: flex;
+}
+.contact-us main .left .first{
+    font-family: Playfair Display;
+    font-size: 130px;
+    font-weight: 400;
+    line-height: 110px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #A68264;
+}
+.contact-us main .left .second{
+    font-family: Playfair Display;
+    font-size: 130px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 110px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color:#6B4424;
+    margin-top: 40px;
+}
+
+.contact-us main .right{
+    width: 30%;
+    display: flex;
+}
+
+.contact-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.form-row {
+    display: flex;
+    gap: 10px;
+}
+
+.form-row input,
+.form-row textarea {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: none;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: #6B4424;
+    color: #FCF8F2;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.submit-btn:hover {
+    background-color: #A68264;
+}
+
+
+.data-list{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #A68264;
+
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.data-list .data-row{
+    margin-top: 10px;
+}
+
+.data-list .data-row span{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #6B4424;    
+}
+
+@media screen and (max-width: 768px) {
+    .contact-us{
+        height: auto;
+    }
+    .contact-us main{
+        flex-direction: column;
+    }
+    .contact-us main .left .first{
+        font-size: 20px;
+        line-height: 20px;
+    }
+    .contact-us main .left .second{
+        font-size: 20px;
+        line-height: 20px;
+        margin: 0;
+        margin-left: 10px;
+    }
+    .form-row{
+        flex-direction: column;
+    }
+    .contact-us main .left{
+        width: 100%;
+    }
+    .contact-us main .left .title{
+        justify-content: center;
+    }
+    .breadcrumbs{
+        justify-content: center;
+    }
+}

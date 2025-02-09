@@ -1,0 +1,32 @@
+.breadcrumbs{
+    display: flex;
+}
+
+.breadcrumbs div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.breadcrumbs .link{
+    text-decoration: none;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 14.63px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #C7A992;
+}
+
+.breadcrumbs .last{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 14.63px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #987253;
+}

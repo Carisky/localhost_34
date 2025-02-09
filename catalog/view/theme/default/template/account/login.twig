@@ -1,0 +1,34 @@
+<head>
+	<link href="catalog/view/theme/default/stylesheet/common/auth.css" type="text/css" rel="stylesheet"/>
+</head>
+
+{{ header }}
+<div id="account-login" class="container">
+	<div class="row">
+		<div class="col mb-3">
+			<div class="border rounded p-3 d-flex flex-column h-100">
+				<form id="form-login" action="{{ login }}" method="post" data-oc-toggle="ajax">
+					<h2>ZALOGUJ SIĘ</h2>
+					<p>WITAMY Z POWROTEM DO NAS</p>
+					<div class="form-group">
+						<input type="text" name="email" value="{{ email }}" placeholder="{{ entry_email }}" id="input-email" class="form-control"/>
+					</div>
+					<div class="form-group">
+						<input type="password" name="password" value="{{ password }}" placeholder="{{ entry_password }}" id="input-password" class="form-control mb-1"/>
+					</div>
+
+					<div class="text-end">
+						<button type="submit" class="btn btn-primary">{{ button_login }}</button>
+					</div>
+					{% if redirect %}
+						<input type="hidden" name="redirect" value="{{ redirect }}"/>
+					{% endif %}
+				</form>
+				<div class="text-center mt-3">
+					<a href="{{ register }}" class="btn btn-secondary">Register</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{{ footer }}

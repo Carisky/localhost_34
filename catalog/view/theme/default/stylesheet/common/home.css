@@ -1,0 +1,520 @@
+.jam-promo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.jam-promo {
+  margin-top: 100px;
+  display: flex;
+  position: relative; /* Контейнер для позиционирования дочерних элементов */
+  padding-bottom: 420px;
+}
+
+.pear-on-tree {
+  position: absolute;
+  top: 475px; /* Отрегулируйте по необходимости */
+  left: 190px; /* Отрегулируйте по необходимости */
+  z-index: 1; /* Установите слой ниже pear-jam */
+  width: auto; /* При необходимости можно задать размеры */
+  height: auto;
+}
+
+.pear-jam {
+  position: relative; /* Сохраняем pear_jam над pear_on_tree */
+  z-index: 2;
+  width: auto;
+  height: auto;
+}
+
+.jam-promo-description {
+  display: flex;
+  flex-direction: column;
+  width: 710px;
+  margin-left: 105px;
+  margin-top: 35px;
+}
+
+.jam-promo-description .o-nas {
+  color: #a68264;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+}
+
+.jam-promo-description .title {
+  font-family: Playfair Display;
+  font-size: 72px;
+  line-height: 72px;
+  font-weight: 400;
+  color: #a68264;
+}
+
+.jam-promo-description .owner {
+  font-family: Playfair Display;
+  font-size: 72px;
+  line-height: 96px;
+  font-weight: 400;
+  margin-left: 52px;
+  color: #6b4424;
+  font-style: italic;
+}
+
+.jam-promo-description .description {
+  color: #a68264;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  margin-top: 30px;
+  width: 585px;
+}
+
+.about-owner {
+  display: flex;
+
+  align-items: center;
+}
+
+.about-owner .popularity {
+  display: flex;
+  width: 70%;
+}
+
+.about-owner .popularity .left .line-1 {
+  font-family: Playfair Display;
+  font-size: 72px;
+  line-height: 72px;
+  font-weight: 400;
+  width: 510px;
+  color: #a68264;
+}
+
+.about-owner .popularity .left .line-2 {
+  font-family: Playfair Display;
+  font-size: 72px;
+  line-height: 110px;
+  font-weight: 400;
+  margin-left: 55px;
+  font-style: italic;
+  width: 480px;
+  color: #6b4424;
+}
+
+.about-owner .popularity .left .line-3 {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  color: #987253;
+}
+
+.about-owner .popularity .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-owner .popularity .right .line-1 {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  color: #987253;
+  width: 620px;
+}
+
+.about-owner .popularity .left {
+  width: 598px;
+  margin-right: 60px;
+}
+
+.link .content {
+  display: flex;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 16px;
+  color: #987253;
+}
+
+.about-owner .popularity .right .line-2 {
+  margin-top: 25px;
+}
+
+.advantages {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+  margin: auto;
+  margin-top: 135px;
+}
+
+.advantages .text {
+  margin-top: 45px;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #987253;
+}
+
+.advantages .card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.products-container {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.name-price-block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.products-container-wrapper {
+  margin-top: 70px;
+  margin-bottom: 160px;
+}
+
+.products-container-wrapper .main {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+}
+
+.products-container-wrapper .header {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+  width: 75%;
+  justify-content: space-between;
+  display: flex;
+  margin: auto;
+}
+
+.products-container-wrapper .header .nav-to {
+  display: flex;
+  align-items: center;
+}
+
+.products-container-wrapper .header .nav-to p {
+  margin-right: 10px;
+}
+
+.products-container-control {
+  cursor: pointer;
+}
+
+.new-product-demo {
+  width: 65%;
+  display: flex;
+  margin: auto;
+  position: relative;
+  margin-bottom: 140px;
+}
+
+.new-product-demo .description {
+  position: absolute;
+  left: 50%;
+  top: 13%;
+  height: 30%;
+  z-index: 4;
+}
+
+.new-product-demo .description .title {
+  color: #a68264;
+  margin-left: 20%;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.new-product-demo .description .main-text {
+  color: #6b4424;
+  font-family: Playfair Display;
+  font-size: 96px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 110px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.new-product-demo .description .sub-main-text {
+  color: #a68264;
+  margin-left: 20%;
+  font-family: Playfair Display;
+  font-size: 96px;
+  font-weight: 400;
+  line-height: 86px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+.new-product-demo .description .sub-text {
+  margin-top: 5%;
+  color: #a68264;
+  margin-left: 20%;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.new-product-demo .description a {
+  color: #987253;
+  margin-left: 20%;
+  margin-top: 5%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21.94px;
+  letter-spacing: 0.05em;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.new-product-demo img {
+  transition: transform 1s ease; /* Плавная анимация для трансформации */
+}
+
+.new-product-demo:hover img {
+  transform: scale(1.1); /* Увеличиваем картинку на 20% */
+}
+
+.jam-promo-container-mobile {
+  display: none;
+}
+
+.about-owner-mobile {
+  display: none;
+}
+.new-product-demo-mobile {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .jam-promo-container {
+    display: none;
+  }
+  .about-owner {
+    display: none;
+  }
+  .new-product-demo {
+    display: none;
+  }
+  .new-product-demo-mobile {
+    display: block;
+    padding: 10px;
+  }
+  .new-product-demo-mobile .description .title {
+    margin-left: 30px;
+    font-family: Montserrat;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0.03em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #a68264;
+  }
+  .new-product-demo-mobile .description .main-text {
+    font-family: Playfair Display;
+    font-size: 40px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 53.32px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #6b4424;
+  }
+  .new-product-demo-mobile .description .sub-main-text {
+    margin-top: 10px;
+    font-family: Playfair Display;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 34px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #a68264;
+  }
+  .new-product-demo-mobile .description .sub-text {
+    margin-top: 10px;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #a68264;
+  }
+
+  .new-product-demo-mobile .description a {
+    color: #987253;
+    margin-left: 30px;
+    margin-top: 5%;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+  
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21.94px;
+    letter-spacing: 0.05em;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+  }
+
+  .new-product-demo-mobile .image {
+    width: -webkit-fill-available;
+  }
+  .jam-promo-container-mobile {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .jam-promo-description-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .jam-promo-container-mobile img {
+    width: -webkit-fill-available;
+    margin-top: 20px;
+  }
+  .jam-promo-description-mobile .o-nas {
+    font-family: Montserrat;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0.03em;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #a68264;
+  }
+  .jam-promo-description-mobile .title {
+    font-family: Playfair Display;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 32px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #a68264;
+  }
+  .jam-promo-description-mobile .owner {
+    font-family: Playfair Display;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 32px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #6b4424;
+  }
+  .jam-promo-description-mobile .description {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #a68264;
+  }
+
+  .about-owner-mobile {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
+  .about-owner-mobile .popularity .left .line-1 {
+    font-family: Playfair Display;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #a68264;
+  }
+  .about-owner-mobile .popularity .left .line-2 {
+    font-family: Playfair Display;
+    font-size: 32px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #6b4424;
+  }
+  .about-owner-mobile .popularity .left .line-3 {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #987253;
+  }
+
+  .about-owner-mobile .popularity .right .line-1 {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #987253;
+  }
+
+  .advantages {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .products-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+    grid-template-rows: repeat(2, auto); /* Creates 2 rows */
+    gap: 10px; /* Optional: Adds spacing between grid items */
+  }
+}

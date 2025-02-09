@@ -1,0 +1,97 @@
+.promotion-block {
+  width: fit-content;
+  display: flex;
+  position: relative;
+  margin: auto;
+  z-index: 1;
+}
+
+.promotion-block .space {
+  width: 25vw;
+  background-color: #fff;
+}
+
+.promotion-block .info {
+  z-index: 2;
+  position: absolute;
+  top: 12%;
+  left: 5%;
+}
+
+.promotion-block .info .name {
+  color: #a68264;
+  font-family: Montserrat;
+  margin-left: 15%;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+}
+.promotion-block .info .title {
+  font-family: Playfair Display;
+  color: #a68264;
+  font-size: 96px;
+  width: 522px;
+}
+.promotion-block .info .code {
+  color: #6b4424;
+  font-size: 96px;
+  margin-left: 10%;
+  font-style: italic;
+}
+
+#promo-link {
+  margin-left: 10%;
+}
+
+/* Для картинки внутри блока */
+.promotion-block img {
+  transition: transform 1s ease; /* Плавная анимация для трансформации */
+}
+
+.promotion-block:hover img {
+  transform: scale(1.1); /* Увеличиваем картинку на 20% */
+}
+.promotion-block-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .promotion-block {
+    display: none;
+  }
+  .promotion-block-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+  .promotion-block-mobile .name {
+    font-family: Montserrat;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 26px;
+    letter-spacing: 0.03em;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #a68264;
+  }
+  .promotion-block-mobile .title{
+    font-family: Playfair Display;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 42px;
+    text-align: center;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #A68264;
+  }
+  .promotion-block-mobile .title .code{
+    color: #6b4424;
+    font-style: italic;
+  }
+  .link .content {
+    justify-content: center;
+  }
+  #promo-link{
+    margin: 0;
+  }
+}

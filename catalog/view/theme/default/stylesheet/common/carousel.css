@@ -1,0 +1,203 @@
+.carousel-desktop {
+    position: relative;
+    width: 100%;
+    height: 750px;
+    overflow: hidden;
+}
+
+.carousel-lower {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #FCF8F2;
+}
+
+.lower-text {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    transform: translateY(-50%);
+    width: 70%;
+    z-index: 2;
+}
+
+.lower-text .line-1{
+    font-family: Playfair Display;
+    color: #A68264;
+    font-weight: 400;
+    font-size: 90px;
+}
+.lower-text .line-2{
+    font-family: Playfair Display;
+    color: #6B4424;
+    font-weight: 400;
+    font-size: 100px;
+    font-style: italic;
+    margin-left: 80px;
+}
+.lower-text .line-3{
+    font-family: Playfair Display;
+    color: #A68264;
+    font-weight: 400;
+    font-size: 90px;
+}
+.lower-text .line-4{
+    font-family: Montserrat;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    color: #987253; 
+    width: 400px; 
+    margin-left: 10%;
+}
+
+.lower-text .content{
+    margin-left: 10%;
+}
+
+.lower-background {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.lower-background img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.carousel-upper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+}
+
+.upper-slide {
+    position: absolute;
+    width: 40%;
+    height: auto;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+.upper-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.upper-slide.exit {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+.carousel-mobile{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .carousel-desktop{
+        display: none;
+    }
+
+    .carousel-mobile{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .carousel-mobile .top{
+        width: auto;
+        height: auto;
+    }
+    .carousel-mobile .top img{
+        width: 100%;
+
+    }
+
+    .carousel-mobile .slider{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
+    }
+    .carousel-mobile .slider .slide img{
+        width: 100%;
+    }
+    .carousel-mobile .bottom{
+        background: #FCF8F2;
+        height: auto;
+        display: flex;
+        justify-content: center;
+    }
+    .text-mobile .line-1{
+        font-family: Playfair Display;
+        font-size: 42px;
+        font-weight: 400;
+        line-height: 55.99px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        margin-right: 40px;
+    }
+    .text-mobile .line-2{
+        font-family: Playfair Display;
+        font-size: 42px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 55.99px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        margin-left: 40px;
+    }
+    .text-mobile .line-3{
+        font-family: Playfair Display;
+        font-size: 42px;
+        font-weight: 400;
+        line-height: 55.99px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        margin-right: 40px;
+    }
+    .text-mobile .line-4{
+        font-family: Montserrat;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 13.41px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;        
+    }
+
+    /* Плавное появление и исчезновение */
+    .fade {
+        opacity: 0;
+        transition: opacity 1s ease;
+    }
+
+    .fade.active {
+        opacity: 1;
+    }
+}

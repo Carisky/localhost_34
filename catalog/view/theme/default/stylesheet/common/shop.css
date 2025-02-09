@@ -1,0 +1,181 @@
+.shop{
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.shop .title{
+    font-family: Playfair Display;
+    font-size: 72px;
+    font-weight: 400;
+    line-height: 72px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #A68264;
+}
+
+#products-list {
+    margin: auto;
+    margin-top: 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, auto);
+
+}
+
+#products-list .product-card{
+    height: 260px;
+    width: 260px;
+    margin-bottom: 140px;
+}
+
+footer{
+    margin-top: 200px;
+}
+
+.pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pagination-btn{
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17.07px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color:#A68264;
+}
+
+.pagination .pagination-btn.active{
+    color:#6B4424;
+    font-weight: 550;
+}
+
+.additional-info-title{
+    font-family: Playfair Display;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color:#987253;
+}
+
+.additional-info-plot{
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 30px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color:#A68264;
+}
+
+.additional{
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.additional .block{
+    padding: 10px;
+    max-width: 45%;
+}
+
+.sorters .sorter{
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17.07px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #987253;
+
+    cursor: pointer;
+    width: 15%;
+    display: flex;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.sorters .sorter p{
+    margin-left: 10px;
+}
+.sorters{
+    display: flex;
+}
+
+.shop .modal-menu {
+    display: none;
+    position: absolute;
+    top: 0;
+    width: 20vw;
+    height: 65vh;
+    background-color: #FCF8F2;
+    color: #A68264;
+    transition: right 0.3s ease-in-out;
+    padding-top: 20px;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.shop .modal-menu.active {
+    display: block;
+    z-index: 10;  /* Ensure it's above all other content */
+}
+.modal-menu .top{
+    height: fit-content;
+    display: flex;
+    padding: 10px;
+}
+.modal-menu .top .title{
+    height: fit-content;
+    font-family: Playfair Display;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 42.66px;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #A68264;
+}
+
+.modal-menu .checkbox-container{
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 768px) {
+    #products-list .product-card{
+        margin-bottom: 30px;
+        height: auto;
+        width: auto;
+    }
+    #products-list{
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, auto);
+    }
+    .additional .block{
+        max-width: 100%;
+    }
+    footer{
+        margin: 0;
+    }
+
+    .shop .modal-menu{
+        width: 60vw;
+    }
+    .sorters .sorter{
+        width: auto;
+    }
+}

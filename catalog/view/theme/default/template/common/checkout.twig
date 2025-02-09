@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Checkout Page</title>
+		<link href="catalog/view/theme/default/stylesheet/common/checkout.css" type="text/css" rel="stylesheet"/>
+	</head>
+	<body>
+		{{header}}
+		<main class="checkout-container">
+			<section class="checkout-form">
+				<h1>Twoje dane</h1>
+				<form>
+					<div class="form-group">
+						<input type="text" id="first-name" placeholder="Imię *" required>
+					</div>
+					<div class="form-group">
+						<input type="text" id="last-name" placeholder="Nazwisko *" required>
+					</div>
+					<div class="form-group">
+						<input type="text" id="address" placeholder="Nazwa ulicy, numer budynku / numer lokalu *" required>
+					</div>
+					<div class="form-group">
+						<input type="text" id="zip-code" placeholder="Kod pocztowy *" required>
+					</div>
+					<div class="form-group">
+						<input type="text" id="city" placeholder="Miasto *" required>
+					</div>
+					<div class="form-group">
+						<input type="tel" id="phone" placeholder="Numer telefonu *" required>
+					</div>
+					<div class="form-group">
+						<input type="email" id="email" placeholder="Adres e-mail *" required>
+					</div>
+				</form>
+			</section>
+
+			<section id="checkout-cart" class="checkout-cart">
+				<h2>Zawartość koszyka</h2>
+				<div
+					id="checkout-list"><!-- Товары будут отрисованы через JS -->
+				</div>
+				<div class="summary">
+					<h3>Podsumowanie</h3>
+					<p id="total-price">Cena: 0 zł</p>
+					<p id="shipping-cost">Koszt przesyłki: 0 zł</p>
+					<p id="grand-total">Wszystko: 0 zł</p>
+					<button>Kupuję i płacę</button>
+				</div>
+			</section>
+		</main>
+		{{footer}}
+		 <script type="text/javascript" src="catalog/view/javascript/checkout/checkout.js"></script>
+	</body>
+</html></body></html>

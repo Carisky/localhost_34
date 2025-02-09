@@ -1,0 +1,484 @@
+.single-product {
+  width: 90%;
+  margin: auto;
+  display: flex;
+}
+
+.single-product .right {
+  margin-left: 50px;
+  flex-grow: 1;
+}
+
+.single-product .product-image {
+  height: 530px;
+  width: 530px;
+  background-color: #fcf8f2;
+}
+
+.product-name {
+  font-family: Playfair Display;
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 48px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+.single-product .warehouse-info {
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+
+  display: flex;
+  height: 20px;
+}
+
+.single-product .warehouse-info {
+  margin-top: 20px;
+}
+.single-product .warehouse-info div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.single-product .warehouse-info .block {
+  margin-left: 20px;
+}
+
+.single-product .description {
+  margin-top: 30px;
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+.single-product .additional-info .bold {
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+.single-product .additional-info .common {
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+.single-product .price {
+  font-family: Montserrat;
+  margin-top: 40px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 26px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #a68264;
+}
+
+.single-product .actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-product .actions .count {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #987253;
+
+  height: 40px;
+  border: 1px solid #987253;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-grow: 0.9;
+}
+
+.single-product .actions .to-cart {
+  display: flex;
+  flex-grow: 0.7;
+  border: 1px solid #987253;
+  height: 40px;
+  margin-left: 40px;
+
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
+  letter-spacing: 0.05em;
+  text-align: right;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #987253;
+  justify-content: center;
+  align-items: center;
+}
+.single-product .actions .to-cart img {
+  margin-left: 20px;
+}
+.single-product .actions .event {
+  cursor: pointer;
+  user-select: none;
+  font-size: 20px;
+}
+
+.accordion {
+  width: 90%;
+  border-radius: 5px;
+  margin: auto;
+  margin-top: 20px;
+  overflow: hidden;
+}
+
+.accordion-item {
+  border-top: 1.5px solid #a68264;
+}
+
+.accordion-header {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  color: #a68264;
+
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+  background-color: #e2e2e2;
+}
+
+.accordion-content {
+  padding: 10px 15px;
+  display: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.rating-stars {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+  width: fit-content;
+}
+
+.rating-stars input[type="radio"] {
+  display: none;
+}
+
+.rating-stars label {
+  font-size: 2rem;
+  color: lightgray;
+  cursor: pointer;
+}
+
+.rating-stars input[type="radio"]:checked ~ label svg {
+  fill: #987253; /* Цвет выбранных звёзд */
+}
+
+/* Подсвечивание при наведении */
+.rating-stars label:hover svg,
+.rating-stars label:hover ~ label svg {
+  fill: #987253; /* Цвет звёзд при наведении */
+}
+
+form .form-control {
+  margin-top: 5px;
+
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #c7a992;
+
+  display: flex;
+  align-items: center;
+}
+
+form .form-control input {
+  background-color: #fcf8f2;
+  border: none;
+
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #c7a992;
+
+  width: 100%;
+}
+
+form .form-control textarea {
+  background-color: #fcf8f2;
+  border: none;
+  resize: none;
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #c7a992;
+
+  width: 100%;
+}
+
+form .form-control input::placeholder,
+form .form-control textarea::placeholder {
+  color: #c7a992; /* Установите нужный цвет */
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+form .form-control input:focus,
+textarea:focus {
+  outline: none;
+}
+
+form button {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17.07px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #987253;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.opinion-form {
+  width: 50%;
+}
+
+.button-container {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.separator {
+  margin-top: 10px;
+  background-color: #987253;
+  width: 100%;
+  height: 1.5px;
+}
+
+/* Общий контейнер для продуктов */
+.products-container-wrapper {
+  margin-top: 70px;
+  margin-bottom: 100px;
+}
+
+.products-container-wrapper .header {
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: 0.03em;
+  text-align: left;
+  color: #a68264;
+  width: 75%;
+  justify-content: space-between;
+  display: flex;
+  margin: auto;
+}
+
+/* Секция навигации */
+.products-container-wrapper .header .nav-to {
+  display: flex;
+  align-items: center;
+}
+
+.products-container-wrapper .header .nav-to p {
+  margin-right: 10px;
+}
+
+/* Основной блок с продуктами */
+.products-container-wrapper .main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.products-container {
+  width: 75%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10%;
+}
+
+/* Стиль для карточки товара */
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%; /* Задайте нужный размер для каждой карточки */
+  padding: 20px;
+  text-align: center;
+}
+
+.product-item img {
+  width: 100%;
+  height: auto;
+  transition: transform 1s ease; /* Плавная анимация для трансформации */
+}
+
+.product-item:hover img {
+  transform: scale(1.1); /* Увеличиваем картинку на 10% */
+}
+
+.product-item .product-name {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 16px;
+  color: #a68264;
+  margin-top: 10px;
+}
+
+.product-item .product-price {
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 18px;
+  color: #987253;
+  margin-top: 5px;
+}
+
+/* Стили для блока с описанием */
+.products-container-wrapper .header .title {
+  font-family: Montserrat;
+  font-size: 18px;
+  font-weight: 500;
+  color: #a68264;
+  text-transform: uppercase;
+}
+
+.products-container-wrapper .header .nav-to img {
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+}
+
+/* Контейнер для элементов управления */
+.products-container-control {
+  cursor: pointer;
+}
+
+/* Блок с преимуществами (если нужно) */
+.advantages {
+  display: flex;
+  justify-content: space-between;
+  width: 65%;
+  margin: auto;
+  margin-top: 135px;
+}
+
+.advantages .text {
+  margin-top: 45px;
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  color: #987253;
+}
+
+.title-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .products-container {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
+    grid-template-rows: repeat(2, auto); /* Creates 2 rows */
+    gap: 10px; /* Optional: Adds spacing between grid items */
+  }
+  .single-product {
+    display: flex;
+    flex-direction: column;
+  }
+  .single-product .left img {
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+  }
+  .opinion-form {
+    width: 100%;
+  }
+
+  .title-mobile {
+    display: flex;
+    text-align: center;
+
+    font-family: Playfair Display;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 32px;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+    color: #987253;
+  }
+  .products-container-wrapper .header .title {
+    display: none;
+  }
+  .products-container-wrapper .header .nav-to {
+    display: none;
+  }
+  .single-product .right{
+    margin:0;
+  }
+}
