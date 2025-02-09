@@ -374,3 +374,5 @@
 2025-02-05 19:20:26 - PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\oc34\system\library\cart\currency.php on line 29
 2025-02-05 19:20:26 - PHP Warning:  Undefined array key "USD" in C:\OSPanel\domains\oc34\system\library\cart\currency.php on line 32
 2025-02-05 19:20:26 - PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\oc34\system\library\cart\currency.php on line 32
+2025-02-09 18:53:28 - PHP Notice:  Error: Could not load template default/template/common/column_right! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37
+2025-02-09 18:53:28 - PHP Notice:  Error: Could not load template default/template/error/not_found! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37

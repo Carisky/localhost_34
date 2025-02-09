@@ -1,18 +1,18 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'https://dev.wrapx.pl/admin/');
-define('HTTP_CATALOG', 'https://dev.wrapx.pl/');
+define('HTTP_SERVER', 'http://localhost/admin/');
+define('HTTP_CATALOG', 'http:/localhost//upload/');
 
 // HTTPS
-define('HTTPS_SERVER', 'https://dev.wrapx.pl/admin/');
-define('HTTPS_CATALOG', 'https://dev.wrapx.pl/');
+define('HTTPS_SERVER', 'http://localhost/admin/');
+define('HTTPS_CATALOG', 'http://localhost/upload/');
 
 // DIR
-define('DIR_APPLICATION', 'admin/');
-define('DIR_SYSTEM', 'system/');
-define('DIR_IMAGE', 'image/');
-define('DIR_STORAGE', 'storage/');
-define('DIR_CATALOG', 'catalog/');
+define('DIR_APPLICATION', 'C:/OSPanel/domains/localhost/admin/');
+define('DIR_SYSTEM', 'C:/OSPanel/domains/localhost/system/');
+define('DIR_IMAGE', 'C:/OSPanel/domains/localhost/image/');
+define('DIR_STORAGE', DIR_SYSTEM . 'storage/');
+define('DIR_CATALOG', 'C:/OSPanel/domains/localhost/catalog/');
 define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION . 'view/template/');
 define('DIR_CONFIG', DIR_SYSTEM . 'config/');
