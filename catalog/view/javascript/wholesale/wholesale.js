@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     minusBtn.addEventListener("click", function () {
       let currentValue = parseInt(value.textContent);
-      if (currentValue > 1) {
+      if (currentValue >= 1) {
         value.textContent = currentValue - 1;
         updateSumAndTotal(action.closest("tr"), "minus");
       }
@@ -46,7 +46,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const pricePerPack = parseFloat(row.getAttribute("data-price"));
     totalPriceCell.textContent = pricePerPack * packQuantity;
 
-    if (row.querySelector('input[type="checkbox"]').checked) {
       if (action == "plus") {
         let newVal = checkoutPriceVal + parseInt(totalPriceCell.textContent);
         checkoutPrice.textContent = newVal - checkoutPriceVal;
@@ -54,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let newVal = checkoutPriceVal + parseInt(totalPriceCell.textContent);
         checkoutPrice.textContent = newVal - checkoutPriceVal;
       }
-    }
   }
 });
 

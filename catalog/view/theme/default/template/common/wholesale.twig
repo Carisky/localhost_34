@@ -81,7 +81,6 @@
 								<th>Suma</th>
 								<th>Cena za jedno opakowanie</th>
 								<th>Wszystko</th>
-								<th>Status</th>
 								<th>Podatek</th>
 							</tr>
 						</thead>
@@ -95,7 +94,7 @@
 									<td>
 										<div class="actions">
 											<div class="minus">-</div>
-											<div class="value">1</div>
+											<div class="value">0</div>
 											<div class="plus">+</div>
 										</div>
 									</td>
@@ -107,7 +106,6 @@
 									<td data-label="Wszystko">
 										<div class="data total-price">{{product.price_per_pack}}</div>
 									</td>
-									<td data-label="Status"><input type="checkbox"></td>
 									<td data-label="Podatek">{{product.tax_rate}}</td>
 								</tr>
 							{% endfor %}

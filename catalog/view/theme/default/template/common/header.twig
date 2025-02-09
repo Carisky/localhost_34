@@ -5,10 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-		<script type="text/javascript" src="catalog/view/javascript/jquery/jquery-3.7.0.min.js"></script>
-
-		<link href="catalog/view/theme/default/stylesheet/common/header.css" type="text/css" rel="stylesheet"/>
-		<link href="catalog/view/theme/default/stylesheet/common/cart.css" type="text/css" rel="stylesheet"/>
+		 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-3.7.0.min.js"></script>
+		 <script type="text/javascript" src="catalog/view/javascript/jquery/jquery-3.7.0.min.map"></script>
+		 <script type="text/javascript" src="catalog/view/javascript/live_search/live_search.js"></script>
+		<link href="catalog/view/theme/default/stylesheet/common/header.css" type="text/css" rel="stylesheet"/> <link href="catalog/view/theme/default/stylesheet/common/cart.css" type="text/css" rel="stylesheet"/>
 		<link href="catalog/view/theme/default/stylesheet/common/global.css" type="text/css" rel="stylesheet"/>
 		<link href="catalog/view/theme/default/stylesheet/common/home.css" type="text/css" rel="stylesheet"/>
 		<link href="catalog/view/theme/default/stylesheet/common/product.css" type="text/css" rel="stylesheet"/>
@@ -64,8 +64,12 @@
 				<img src="image/catalog/assets/logo.svg">
 			</div>
 			<div class="right-group">
-				<div >
-					<input id="search" type="text" name="search" placeholder="Введите запрос...">
+				<div>
+					<input type="text" id="search-input" placeholder="Поиск...">
+					<div id="live-search" class="live-search">
+						<ul></ul>
+						<div class="result-text"></div>
+					</div>
 				</div>
 				<div class="cart-button">
 					<div id="cart-count">0</div>
@@ -169,8 +173,8 @@
 
 	</body>
 	 <script type="text/javascript" src="catalog/view/javascript/header/header.js"></script>
- 	 <script type="text/javascript" src="catalog/view/javascript/utils/updateLocalStorageProductsCount.js"></script>
+ <script type="text/javascript" src="catalog/view/javascript/utils/updateLocalStorageProductsCount.js"></script>
 	 <script type="text/javascript" src="catalog/view/javascript/products/createProductCartCard.js"></script>
-	 <script type="text/javascript" src="catalog/view/javascript/live_search/live_search.js"></script>
+
 
 </html>

@@ -7,6 +7,7 @@ class ControllerCommonCheckout extends Controller {
 
         $data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
+		$data['payment_method'] = $this->load->controller('checkout/payment_method');
 	
 
         $data['breadcrumbs'] = [

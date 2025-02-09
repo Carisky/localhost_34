@@ -62,13 +62,7 @@ class ControllerExtensionModuleLiveSearch extends Controller {
 				$image_height       = $this->config->get('module_live_search_image_height') ? (int)$this->config->get('module_live_search_image_height') : 0;
 				$title_length       = (int)$this->config->get('module_live_search_title_length');
 				$description_length = (int)$this->config->get('module_live_search_description_length');
-
 				foreach ($results as $result) {
-					if ($result['image']) {
-						$image = $this->model_tool_image->resize($result['image'], $image_width, $image_height);
-					} else {
-						$image = $this->model_tool_image->resize('placeholder.png', $image_width, $image_height);
-					}
 
 					if ($this->customer->isLogged() || !$this->config->get('config_customer_price')) {
 						$price = $this->currency->format($this->tax->calculate($result['price'], $result['tax_class_id'], $this->config->get('config_tax')), $currency_code);
@@ -97,12 +91,12 @@ class ControllerExtensionModuleLiveSearch extends Controller {
 					$json['products'][] = array(
 						'product_id' => $result['product_id'],
 						'minimum'    => $result['minimum'],
-						'image'      => $image,
-						'name'       => utf8_substr(strip_tags(html_entity_decode($result['name'], ENT_QUOTES, 'UTF-8')), 0, $title_length) . '..',
+						'image'      => $result['image'],
+						'name'       => $result['name'],
 						'extra_info' => utf8_substr(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8')), 0, $description_length) . '..',
 						'price'      => $price,
 						'special'    => $special,
-						'url'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
+						'url'        => $this->url->link('common/singleproduct', 'id=' . $result['product_id'])
 					);
 				}
 			}

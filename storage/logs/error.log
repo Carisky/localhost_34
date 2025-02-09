@@ -376,3 +376,6 @@
 2025-02-05 19:20:26 - PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\oc34\system\library\cart\currency.php on line 32
 2025-02-09 18:53:28 - PHP Notice:  Error: Could not load template default/template/common/column_right! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37
 2025-02-09 18:53:28 - PHP Notice:  Error: Could not load template default/template/error/not_found! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37
+2025-02-09 19:47:16 - PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\localhost\catalog\controller\common\wholesale.php on line 104
+2025-02-09 19:47:16 - PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\localhost\catalog\controller\common\wholesale.php on line 106
+2025-02-09 21:25:58 - PHP Warning:  Undefined variable $image in C:\OSPanel\domains\localhost\catalog\controller\extension\module\live_search.php on line 94

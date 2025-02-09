@@ -2,125 +2,111 @@
 
 class ControllerCommonWholesale extends Controller
 {
-	public function index()
-	{
-		// Проверяем, авторизован ли пользователь
-		if (!$this->customer->isLogged()) {
-			$this->response->redirect($this->url->link('account/register'));
-			return;
-		}
+    public function index()
+    {
+        if (!$this->customer->isLogged()) {
+            $this->response->redirect($this->url->link('account/register'));
+            return;
+        }
 
-		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
+        $data['footer'] = $this->load->controller('common/footer');
+        $data['header'] = $this->load->controller('common/header');
 
-		$data['action_login'] = $this->url->link('account/login');
-		$data['action_register'] = $this->url->link('account/register');
+        $this->load->model('catalog/product');
+        $this->load->model('catalog/category');
+        $this->load->model('extension/total/coupon'); // Загружаем модель купонов
 
-		// Загрузка моделей товаров и категорий
-		$this->load->model('catalog/product');
-		$this->load->model('catalog/category');
+        $coupon_code = '2222'; // Задаем код купона (можно передавать через GET/POST)
+        $coupon_info = $this->model_extension_total_coupon->getCoupon($coupon_code);
+        $categories = $this->model_catalog_category->getCategories();
+        $data['category_products'] = [];
 
-		// Получение всех категорий
-		$categories = $this->model_catalog_category->getCategories();
+        foreach ($categories as $category) {
+            $filter_data = [
+                'filter_category_id' => $category['category_id'],
+                'start' => 0,
+                'limit' => 0
+            ];
 
-		// Подготовка массива для хранения товаров по категориям
-		$data['category_products'] = [];
+            $products = $this->model_catalog_product->getProducts($filter_data);
+            $data['product_currency'] = $this->currency->getSymbolLeft($this->config->get('config_currency')) ?: $this->currency->getSymbolRight($this->config->get('config_currency'));
 
+            if ($products) {
+                $data['category_products'][] = [
+                    'category_name' => $category['name'],
+                    'products'      => $this->prepareProductData($products, $coupon_info)
+                ];
+            }
+        }
 
-		foreach ($categories as $category) {
-			// Получаем товары для этой категории
-			$filter_data = [
-				'filter_category_id' => $category['category_id'],
-				'start' => 0,
-				'limit' => 0 // Не ограничиваем количество товаров
-			];
-			// Получаем товары для текущей категории
+        $data['breadcrumbs'] = [
+            [
+                'text' => 'Główna',
+                'href' => $this->url->link('common/home')
+            ],
+            [
+                'text' => 'Hurtownia',
+                'href' => $this->url->link('common/workwithus')
+            ]
+        ];
 
+        $this->response->setOutput($this->load->view('common/wholesale', $data));
+    }
 
-			$products = $this->model_catalog_product->getProducts($filter_data);
-			$data['product_currency'] = $this->currency->getSymbolLeft($this->config->get('config_currency')) ?: $this->currency->getSymbolRight($this->config->get('config_currency'));
-			// Если есть товары в категории, добавляем их в массив
-			if ($products) {
-				$data['category_products'][] = [
-					'category_name' => $category['name'],
-					'products'      => $this->prepareProductData($products)
-				];
-			}
-		}
+    private function prepareProductData($products, $coupon_info)
+    {
+        $product_data = [];
+        foreach ($products as $product) {
+            $attributes = $this->model_catalog_product->getProductAttributes($product['product_id']);
+            $quantity_per_pack = '';
 
+            foreach ($attributes as $attribute_group) {
+                foreach ($attribute_group['attribute'] as $attribute) {
+                    if ($attribute['name'] == 'quantity_per_pack') {
+                        $quantity_per_pack = $attribute['text'];
+                    }
+                }
+            }
 
+            if ($quantity_per_pack) {
+                $tax_class_id = $product['tax_class_id'];
+                $price_with_tax = $this->tax->calculate($product['price'], $tax_class_id, $this->config->get('config_tax'));
 
-		$data['breadcrumbs'] = [
-			[
-				'text' => 'Główna', // Польский для "Главная"
-				'href' => $this->url->link('common/home')
-			],
-			[
-				'text' => 'Hurtownia', // Польский для текущей страницы
-				'href' => $this->url->link('common/workwithus')
-			]
-		];
-		// Отправляем данные в представление
-		$this->response->setOutput($this->load->view('common/wholesale', $data));
-	}
+                // Применяем купон
+                $discount_amount = $this->applyCouponDiscount($price_with_tax, $coupon_info);
+                $final_price = $price_with_tax - $discount_amount;
 
-	/**
-	 * Подготовить данные о товарах
-	 *
-	 * @param array $products
-	 * @return array
-	 */
-	private function prepareProductData($products)
-	{
-		$product_data = [];
-		foreach ($products as $product) {
-			// Получаем атрибуты товара
-			$attributes = $this->model_catalog_product->getProductAttributes($product['product_id']);
+                $product_data[] = [
+                    'currency_symbol' 	=> $this->currency->getSymbolLeft($this->config->get('config_currency')) ?: $this->currency->getSymbolRight($this->config->get('config_currency')),
+                    'product_id'        => $product['product_id'],
+                    'name'              => $product['name'],
+                    'image'             => $this->model_tool_image->resize($product['image'], 100, 100),
+                    'quantity_per_pack' => $quantity_per_pack,
+                    'price' 		    => number_format($product['price'], 2, '.', ''),
+                    'price_with_tax'    => number_format($price_with_tax, 2, '.', ''),
+                    'price_per_pack' 	=> number_format($quantity_per_pack * $final_price, 2, '.', ''),
+                    'final_price'       => number_format($final_price, 2, '.', ''),
+                    'discount_amount'   => number_format($discount_amount, 2, '.', ''),
+                    'coupon_code'       => $coupon_info ? $coupon_info['code'] : '',
+                    'href'              => $this->url->link('product/product', 'product_id=' . $product['product_id'])
+                ];
+            }
+        }
+        return $product_data;
+    }
 
-			// Инициализируем переменные для атрибутов
-			$quantity_per_pack = '';
+    private function applyCouponDiscount($price, $coupon_info)
+    {
+        if (!$coupon_info) {
+            return 0; // Если купон не найден, скидки нет
+        }
 
-			// Перебираем группы атрибутов
-			foreach ($attributes as $attribute_group) {
-				// Перебираем атрибуты в группе
-				foreach ($attribute_group['attribute'] as $attribute) {
-					if ($attribute['name'] == 'quantity_per_pack') {
-						$quantity_per_pack = $attribute['text'];
-					}
-				}
-			}
+        if ($coupon_info['type'] == 'P') { // Процентная скидка
+            return ($price * $coupon_info['discount']) / 100;
+        } elseif ($coupon_info['type'] == 'F') { // Фиксированная сумма
+            return min($coupon_info['discount'], $price);
+        }
 
-			if ($quantity_per_pack) {
-				// Получаем налоговый класс товара
-				$tax_class_id = $product['tax_class_id'];
-				// ✅ Расчет цены с учетом налога
-				$price_with_tax = $this->tax->calculate($product['price'], $tax_class_id, $this->config->get('config_tax'));
-				// ✅ Определение процентной ставки налога
-				$tax_rates = $this->tax->getRates($product['price'], $tax_class_id);
-				$tax_percentage = 0;
-				foreach ($tax_rates as $tax) {
-					if ($tax['type'] === 'P') { // Проверяем, что налог процентный
-						$tax_percentage = $tax['rate'];
-						break;
-					}
-				}
-				// Формируем данные о товаре
-				$product_data[] = [
-					'currency_symbol' 	=> $this->currency->getSymbolLeft($this->config->get('config_currency')) ?: $this->currency->getSymbolRight($this->config->get('config_currency')),
-					'product_id'            => $product['product_id'],
-					'name'                  => $product['name'],
-					'image'                 => $this->model_tool_image->resize($product['image'], 100, 100), // Размер изображения
-					'quantity_per_pack'     => $quantity_per_pack, // Количество штук в упаковке
-					'pack_quantity'         => (int)$product['quantity'] / (int)$quantity_per_pack, // Количество упаковок
-					'price' 		=> number_format($product['price'], 2, '.', ''), // Цена без налога
-					'price_with_tax'        => number_format($price_with_tax, 2, '.', ''), // Цена с налогом
-					'price_per_pack' 	=> number_format((int)$quantity_per_pack * $price_with_tax, 2, '.', ''), // Цена упаковки с налогом
-					'tax_rate'              => number_format($tax_percentage, 1, '.', ''), // Процентная ставка налога
-					'status'                => $product['status'] ? 'Active' : 'Inactive', // Статус товара
-					'href'                  => $this->url->link('product/product', 'product_id=' . $product['product_id'])
-				];
-			}
-		}
-		return $product_data;
-	}
+        return 0;
+    }
 }
