@@ -143,6 +143,10 @@ main {
   align-items: end;
   width: 40%;
 }
+.img-thumbnail{
+  height: 150;
+  width: 150;
+}
 #checkout {
   height: 30px;
   border: 1px solid #c7a992;

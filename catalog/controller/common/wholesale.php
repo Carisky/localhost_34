@@ -109,7 +109,7 @@ class ControllerCommonWholesale extends Controller
                     'currency_symbol' 	=> $this->currency->getSymbolLeft($this->config->get('config_currency')) ?: $this->currency->getSymbolRight($this->config->get('config_currency')),
                     'product_id'        => $product['product_id'],
                     'name'              => $product['name'],
-                    'image'             => $this->model_tool_image->resize($product['image'], 100, 100),
+                    'image' => HTTP_SERVER . 'image/' . $product['image'],
                     'quantity_per_pack' => $quantity_per_pack,
                     'price' 		    => number_format($product['price'], 2, '.', ''),
                     'price_with_tax'    => number_format($price_with_tax, 2, '.', ''),
