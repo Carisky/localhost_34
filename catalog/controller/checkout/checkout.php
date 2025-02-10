@@ -65,7 +65,7 @@ class ControllerCheckoutCheckout extends Controller {
 			$data['shipping_method'] = '';
 		}
 
-		$data['payment_method'] = $this->load->controller('checkout/payment_method');
+		$data['payment_methods'] = $this->load->controller('checkout/payment_method');
 		$data['confirm'] = $this->load->controller('checkout/confirm');
 
 		$data['column_left'] = $this->load->controller('common/column_left');

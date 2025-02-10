@@ -10,6 +10,7 @@
 	border-bottom-right-radius: 10px;
 	box-shadow: 0 2px 2px #DDDDDD;
 	left: 0;
+	top:80%;
 	display: none;
 }
 .live-search .loading{

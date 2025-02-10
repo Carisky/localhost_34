@@ -111,4 +111,7 @@
       flex: 1 1 100%;
     }
   }
-  
+  .payment_methods{
+    display: flex;
+    flex-direction: column;
+  }

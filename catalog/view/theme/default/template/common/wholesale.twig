@@ -102,7 +102,8 @@
 									<td data-label="Suma">
 										<div class="quantity_per_pack data sum">{{product.quantity_per_pack}}</div>
 									</td>
-									<td data-label="Cena">{{ product.price_per_pack }}<span>{{product.currency_symbol}}</span></td>
+									<td data-label="Cena">{{ product.price_per_pack }}<span>{{product.currency_symbol}}</span>
+									</td>
 									<td data-label="Wszystko">
 										<div class="data total-price">{{product.price_per_pack}}</div>
 									</td>
@@ -117,20 +118,30 @@
 	{% else %}
 		<p>Brak produktów w tej kategorii.</p>
 	{% endif %}
-    <div class="checkout">
-        <div class="content">
-            <div class="price">
-                <div class="text">Cena</div>
+	<div class="checkout">
+		<div class="payment_methods">
+			<h3>Metoda płatności</h3>
+			{% for payment in payment_methods %}
+				<label>
+					<input type="radio" name="payment_method" value="{{ payment.code }}">
+					{{ payment.title }}
+				</label>
+			{% endfor %}
+		</div>
+		<div class="content">
+
+			<div class="price">
+				<div class="text">Cena</div>
 				<div class="wrapper">
-				<div id="checkout-price">0</div>
-				<span class="text">{{product_currency}}</span>
+					<div id="checkout-price">0</div>
+					<span class="text">{{product_currency}}</span>
 				</div>
-                
-            </div>
-            
-            <div id="checkout">Zamawiam</div>
-        </div>
-    </div>
+
+			</div>
+
+			<div id="checkout">Zamawiam</div>
+		</div>
+	</div>
 </main>
 {{footer}}
  <script type="text/javascript" src="catalog/view/javascript/wholesale/wholesale.js"></script>

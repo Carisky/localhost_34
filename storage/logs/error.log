@@ -379,3 +379,12 @@
 2025-02-09 19:47:16 - PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\localhost\catalog\controller\common\wholesale.php on line 104
 2025-02-09 19:47:16 - PHP Warning:  Trying to access array offset on value of type null in C:\OSPanel\domains\localhost\catalog\controller\common\wholesale.php on line 106
 2025-02-09 21:25:58 - PHP Warning:  Undefined variable $image in C:\OSPanel\domains\localhost\catalog\controller\extension\module\live_search.php on line 94
+2025-02-10 19:52:34 - PHP Warning:  Undefined array key "id" in C:\OSPanel\domains\localhost\catalog\controller\common\singleproduct.php on line 31
+2025-02-10 20:53:17 - PHP Warning:  Undefined array key "country_id" in C:\OSPanel\domains\localhost\catalog\model\extension\payment\cod.php on line 6
+2025-02-10 20:53:17 - PHP Warning:  Undefined array key "zone_id" in C:\OSPanel\domains\localhost\catalog\model\extension\payment\cod.php on line 6
+2025-02-10 20:53:17 - PHP Warning:  Undefined array key "country_id" in C:\OSPanel\domains\localhost\catalog\model\extension\payment\bank_transfer.php on line 6
+2025-02-10 20:53:17 - PHP Warning:  Undefined array key "zone_id" in C:\OSPanel\domains\localhost\catalog\model\extension\payment\bank_transfer.php on line 6
+2025-02-10 20:54:16 - PHP Warning:  Undefined array key "country_id" in C:\OSPanel\domains\localhost\catalog\model\extension\payment\cod.php on line 6
+2025-02-10 20:54:16 - PHP Warning:  Undefined array key "zone_id" in C:\OSPanel\domains\localhost\catalog\model\extension\payment\cod.php on line 6
+2025-02-10 20:54:16 - PHP Warning:  Undefined array key "country_id" in C:\OSPanel\domains\localhost\catalog\model\extension\payment\bank_transfer.php on line 6
+2025-02-10 20:54:16 - PHP Warning:  Undefined array key "zone_id" in C:\OSPanel\domains\localhost\catalog\model\extension\payment\bank_transfer.php on line 6

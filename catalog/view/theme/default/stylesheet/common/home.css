@@ -320,7 +320,17 @@
 .new-product-demo-mobile {
   display: none;
 }
+.products-container-wrapper .header a{
+  text-decoration: none;
+  color: #a68264;
+}
 @media screen and (max-width: 768px) {
+
+  .products-container-wrapper .header{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
   .jam-promo-container {
     display: none;
   }

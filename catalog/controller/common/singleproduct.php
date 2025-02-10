@@ -28,6 +28,7 @@ class ControllerCommonSingleProduct extends Controller
         $data['rating'] = (int)$product_info['rating'];
         $data['quantity'] = (int)$product_info['quantity'];
         $data['sku'] = $product_info['sku'];
+        $data['id'] = $product_info['product_id'];
 
         // Генерация звезд рейтинга
         $data['stars'] = '';

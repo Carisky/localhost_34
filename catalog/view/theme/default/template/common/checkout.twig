@@ -46,14 +46,18 @@
 					<p id="total-price">Cena: 0 zł</p>
 					<p id="shipping-cost">Koszt przesyłki: 0 zł</p>
 					<p id="grand-total">Wszystko: 0 zł</p>
+					<div class="payment_methods">
+
+						{% for payment in payment_methods %}
+							<label>
+								<input type="radio" name="payment_method" value="{{ payment.code }}">
+								{{ payment.title }}
+							</label>
+						{% endfor %}
+					</div>
 					<button>Kupuję i płacę</button>
 				</div>
-				{% for payment in payment_methods %}
-					<label>
-						<input type="radio" name="payment_method" value="{{ payment.code }}">
-						{{ payment.title }}
-					</label>
-				{% endfor %}
+
 			</section>
 		</main>
 		{{footer}}

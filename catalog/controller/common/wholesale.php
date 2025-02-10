@@ -21,6 +21,35 @@ class ControllerCommonWholesale extends Controller
         $categories = $this->model_catalog_category->getCategories();
         $data['category_products'] = [];
 
+        $this->load->model('setting/extension');
+        $this->load->model('account/address');
+
+        // Получаем адрес пользователя (если он авторизован)
+        if ($this->customer->isLogged() && isset($this->session->data['payment_address_id'])) {
+            $address = $this->model_account_address->getAddress($this->session->data['payment_address_id']);
+        } else {
+            $address = [
+                'country_id' => $this->config->get('config_country_id'),
+                'zone_id' =>  $this->config->get('config_zone_id')
+            ];
+        }
+
+        $payment_methods = [];
+        $extensions = $this->model_setting_extension->getExtensions('payment');
+
+        foreach ($extensions as $extension) {
+            if ($this->config->get('payment_' . $extension['code'] . '_status')) {
+                $this->load->model('extension/payment/' . $extension['code']);
+                $method = $this->{'model_extension_payment_' . $extension['code']}->getMethod($address, 0);
+
+                if ($method) {
+                    $payment_methods[] = $method;
+                }
+            }
+        }
+
+        $data['payment_methods'] = $payment_methods;
+
         foreach ($categories as $category) {
             $filter_data = [
                 'filter_category_id' => $category['category_id'],

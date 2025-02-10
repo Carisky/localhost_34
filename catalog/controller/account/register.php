@@ -36,6 +36,9 @@ class ControllerAccountRegister extends Controller {
         $data['customer_group_id'] = $this->config->get('config_customer_group_id');
         $data['register'] = $this->url->link('account/register/register');
 
+        $data['footer'] = $this->load->controller('common/footer');
+		$data['header'] = $this->load->controller('common/header');
+
         $this->response->setOutput($this->load->view('account/register', $data));
     }
 

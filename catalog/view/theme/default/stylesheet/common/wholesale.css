@@ -124,16 +124,18 @@ main {
 .form-group input::placeholder {
   color: #c7a992;
 }
-
 .checkout {
+  margin-top: 10%;
   display: flex;
-  flex-direction: column;
-  align-items: end;
+  justify-content: space-between;
 }
-.checkout {
-  display: flex;
-  flex-direction: column;
-  align-items: end;
+.payment_methods h3{
+  font-family: Playfair Display;
+  font-size: 20px;
+  color: #987253;
+}
+.payment_methods{
+  color: #a68264;
 }
 .checkout .content {
   display: flex;
@@ -148,7 +150,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-
+  cursor: pointer;
   font-family: Montserrat;
   font-size: 14px;
   font-weight: 500;
@@ -229,4 +231,8 @@ main {
     text-transform: uppercase;
     color: #a68264;
   }
+}
+.payment_methods {
+  display: flex;
+  flex-direction: column;
 }

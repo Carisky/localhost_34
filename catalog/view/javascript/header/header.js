@@ -7,6 +7,19 @@ const modalCart = document.getElementById("modalCart");
 const closeCart = document.getElementById("closeCart");
 
 const togglePageImg = document.querySelector("#togglePage img");
+const searchInputContainer = document.getElementById("search-input-container");
+const searchIcon = document.getElementById("search-icon"); // Предполагается, что у иконки поиска есть id="search-icon"
+const closeSearch = document.getElementById("close-search");
+
+// Открытие поиска
+searchIcon.addEventListener("click", () => {
+  searchInputContainer.classList.add("active");
+});
+
+// Закрытие поиска
+closeSearch.addEventListener("click", () => {
+  searchInputContainer.classList.remove("active");
+});
 
 const cartList = document.getElementById("cart-list");
 

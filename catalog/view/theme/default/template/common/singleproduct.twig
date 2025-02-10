@@ -73,20 +73,16 @@
 			</div>
 		</div>
 		<div class="actions">
-
 			<div class="count">
 				<div class="event" id="minus">-</div>
 				<div id="value">1</div>
 				<div class="event" id="add">+</div>
 			</div>
-			<div class="to-cart">
+			<div id="addToCartBtn" class="to-cart" data-product-id={{id}}>
 				<p>DO KOSZYKA</p>
 				<img src="image/catalog/assets/add_to_cart_ico.svg"/>
 			</div>
-
 		</div>
-
-
 	</div>
 
 </div>
@@ -166,11 +162,12 @@
 			Może Ci się spodobać również
 		</p>
 
-		<div class="nav-to">
-			<p>WZYSTKO</p>
-			<img src="image/catalog/assets/arrow_right.svg"/>
-		</div>
-
+		<a href="index.php?route=common/shop">
+			<div class="nav-to">
+				<p>WZYSTKO</p>
+				<img src="image/catalog/assets/arrow_right.svg"/>
+			</div>
+		</a>
 	</div>
 
 	<div class="main">
