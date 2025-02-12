@@ -5,10 +5,10 @@
 	padding: 5px 0 20px;
 	margin-top: 20px;
 	background-color:#FFF;
-	border: 1px solid #DDD;
+
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
-	box-shadow: 0 2px 2px #DDDDDD;
+
 	left: 0;
 	top:80%;
 	display: none;
@@ -35,12 +35,13 @@
 	background-color: #FAFAFA;
 }
 .live-search ul li:hover {
-	background-color:#F0F7FA;
+	background-color:#fff3e0;
 }
 .live-search ul li a{
 	text-decoration: none;
 	display:flex;
 	align-items: center;
+	color: #af5d19;
 }
 .live-search ul li .product-image{
 	float:left;
@@ -110,4 +111,14 @@
 }
 .live-search .product-image img {
 	width: auto;
+}
+
+#close-search{
+	color: #6b4424;
+}
+
+#search-input{
+	background-color: #fff3e0;
+	color: #6b4424;
+	border: 1px solid #6b4424;
 }

@@ -92,7 +92,6 @@ header img {
 .modal-menu .left {
   width: 60%;
   display: flex;
-  margin-top: 10%;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -105,7 +104,6 @@ header img {
   color: #6b4424;
 }
 .modal-menu .right {
-  margin-top: 5%;
   width: 40%;
   height: auto;
   display: flex;
@@ -121,12 +119,13 @@ header img {
 
 .modal-menu .right .bottom {
   width: 80%;
+  padding-left: 15px;
 }
 
 .modal-menu .left .bottom {
   width: 35%;
   margin-bottom: 20px;
-  height: 8%;
+  height: 5%;
   padding-left: 12%;
 }
 .modal-menu {
@@ -140,7 +139,7 @@ header img {
   color: #a68264;
   transition: right 0.3s ease-in-out;
   z-index: 9999;
-  padding-top: 20px;
+  padding: 5%;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -286,7 +285,7 @@ header img {
 
 #cart-count{
   position: absolute;
-  right: 0;
+  right: 15%;
   bottom: 0;
   color: #fff;
   z-index: 10;
@@ -336,7 +335,7 @@ header img {
     flex-direction: column;
   }
   .modal-menu .left .bottom {
-    height: 30px;
+    height: 20px;
     width: 50%;
     padding-left: 10px;
   }

@@ -390,3 +390,5 @@
 2025-02-10 20:54:16 - PHP Warning:  Undefined array key "zone_id" in C:\OSPanel\domains\localhost\catalog\model\extension\payment\bank_transfer.php on line 6
 2025-02-12 18:21:07 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
 2025-02-12 18:42:06 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
+2025-02-12 20:00:22 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
+2025-02-12 20:00:27 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
