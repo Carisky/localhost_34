@@ -1,4 +1,7 @@
 <?php
+// *	@source		See SOURCE.txt for source and other copyright.
+// *	@license	GNU General Public License version 3; see LICENSE.txt
+
 class ControllerCommonHeader extends Controller {
 	public function index() {
 		// Analytics
@@ -44,6 +47,17 @@ class ControllerCommonHeader extends Controller {
 		}
 
 		$this->load->language('common/header');
+		
+		
+		$host = isset($this->request->server['HTTPS']) && (($this->request->server['HTTPS'] == 'on') || ($this->request->server['HTTPS'] == '1')) ? HTTPS_SERVER : HTTP_SERVER;
+		if ($this->request->server['REQUEST_URI'] == '/') {
+			$data['og_url'] = $this->url->link('common/home');
+		} else {
+			$data['og_url'] = $host . substr($this->request->server['REQUEST_URI'], 1, (strlen($this->request->server['REQUEST_URI'])-1));
+		}
+		
+		
+
 
 		// Wishlist
 		if ($this->customer->isLogged()) {
@@ -59,7 +73,8 @@ class ControllerCommonHeader extends Controller {
 		$data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', true);
 		$data['logged'] = $this->customer->isLogged();
-		$data['account'] = $this->url->link('account/account', '', true);
+		//$data['account'] = $this->url->link('account/account', '', true);
+		$data['account'] = $this->url->link('account/edit', '', true); // Noir
 		$data['register'] = $this->url->link('account/register', '', true);
 		$data['login'] = $this->url->link('account/login', '', true);
 		$data['order'] = $this->url->link('account/order', '', true);
@@ -73,10 +88,50 @@ class ControllerCommonHeader extends Controller {
 		
 		$data['language'] = $this->load->controller('common/language');
 		$data['currency'] = $this->load->controller('common/currency');
+		$data['currency'] = $this->load->controller('common/currency');
+		if ($this->config->get('configblog_blog_menu')) {
+			$data['blog_menu'] = $this->load->controller('blog/menu');
+		} else {
+			$data['blog_menu'] = '';
+		}
 		$data['search'] = $this->load->controller('common/search');
-		$data['cart'] = $this->load->controller('common/cart');
-		$data['menu'] = $this->load->controller('common/menu');
+		//$data['cart'] = $this->load->controller('common/cart');
+		//< Noir
+		$data['cart'] = $this->load->controller('common/nr_cart'); 
+		$data['cart_pannel'] = $this->load->controller('common/nr_cart/cart_pannel');
+		$data['group'] = $this->customer->getGroupId();
+		$data['address'] = nl2br($this->config->get('config_address'));
+		$data['email'] = $this->config->get('config_email'); 
+		$data['informations'] = array();
 
+		foreach ($this->model_catalog_information->getInformations() as $result) {
+			if ($result['bottom']) {
+				$data['informations'][] = [
+					'title' => $result['title'],
+					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id']),
+					'active' => (!empty($this->request->get['information_id']) and $this->request->get['information_id'] == $result['information_id'])
+				];
+			}
+			if($result['information_id'] == 7) {
+				$data['wholesale'] = [
+					'title' => $result['title'],
+					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id']),
+					'active' => (!empty($this->request->get['information_id']) and $this->request->get['information_id'] == $result['information_id'])
+				];
+			}
+		}
+		
+		foreach($data['links'] as $key => $link) {
+			if($link['rel'] == 'icon') unset($data['links'][$key]);
+		}
+		$data['informations'][] = $this->load->controller('blog/menu/nr_menu');
+		$data['facebook'] = $this->config->get('config_facebook');
+		$data['instagram'] = $this->config->get('config_instagram');
+		$data['route'] = $this->request->get['route'];
+		//Noir >
+		
+		$data['menu'] = $this->load->controller('common/menu');
+		
 		return $this->load->view('common/header', $data);
 	}
 }
