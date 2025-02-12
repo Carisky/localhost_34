@@ -4,37 +4,45 @@ const paginationContainer = document.getElementById("pagination");
 const categoriesSorter = document.getElementById("categories-sort");
 const parametersSorter = document.getElementById("parameters-sort");
 
-const categories_menu_icon = document.getElementById("categories-sort");
-const categories_menu = document.getElementById("categories-menu");
-const categories_menu_close = document.getElementById("categories-menu-close");
+const categoriesMenuIcon = document.getElementById("categories-sort");
+const categoriesMenu = document.getElementById("categories-menu");
+const categoriesMenuClose = document.getElementById("categories-menu-close");
 
-const parameters_menu_icon = document.getElementById("parameters-sort");
-const parameters_menu = document.getElementById("parameters-menu");
-const parameters_menu_close = document.getElementById("parameters-menu-close");
+const parametersMenuIcon = document.getElementById("parameters-sort");
+const parametersMenu = document.getElementById("parameters-menu");
+const parametersMenuClose = document.getElementById("parameters-menu-close");
 
 const productsPerPage = 16;
-// URL для получения продуктов
-
 const apiUrl = 'index.php?route=product/all/index';
 
 let allProducts = [];
 let currentPage = 1;
 
-const changeCategoriesVisability = () => {
-  if (categories_menu.classList.contains("active")) {
-    categories_menu.classList.remove("active");
-  } else if (!categories_menu.classList.contains("active")) {
-    categories_menu.classList.add("active");
-  }
-};
+// Вспомогательная функция для смены видимости меню
+const toggleMenuVisibility = (menu) => {
+  menu.classList.toggle("active");
+}
 
-const changeParametersVisability = () => {
-    if (parameters_menu.classList.contains("active")) {
-        parameters_menu.classList.remove("active");
-    } else if (!parameters_menu.classList.contains("active")) {
-        parameters_menu.classList.add("active");
+// Открытие/закрытие меню категорий
+const changeCategoriesVisibility = () => toggleMenuVisibility(categoriesMenu);
+
+// Открытие/закрытие меню параметров
+const changeParametersVisibility = () => toggleMenuVisibility(parametersMenu);
+
+// Загрузка всех продуктов
+async function fetchAllProducts() {
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
     }
-  };
+
+    const data = await response.json();
+    return data.products;
+  } catch (error) {
+    console.error("Error loading products:", error);
+  }
+}
 
 // Загрузка всех продуктов
 async function loadProducts() {
@@ -81,9 +89,7 @@ function renderPagination() {
   // Кнопки для каждой страницы
   for (let i = 1; i <= totalPages; i++) {
     paginationContainer.innerHTML += `
-      <div class="pagination-btn ${
-        i === currentPage ? "active" : ""
-      }" data-page="${i}">${i}</div>
+      <div class="pagination-btn ${i === currentPage ? "active" : ""}" data-page="${i}">${i}</div>
     `;
   }
 
@@ -95,26 +101,22 @@ function renderPagination() {
   }
 
   // Добавляем обработчики событий на кнопки
-  const buttons = document.querySelectorAll(".pagination-btn");
-  buttons.forEach((button) => {
+  document.querySelectorAll(".pagination-btn").forEach((button) => {
     button.addEventListener("click", (e) => {
-      const page = parseInt(e.target.dataset.page, 10);
-      currentPage = page;
-      renderUI(page);
+      currentPage = parseInt(e.target.dataset.page, 10);
+      renderUI(currentPage);
       renderPagination(); // Обновляем кнопки и класс active
     });
   });
 }
 
 // Загружаем данные при загрузке страницы
-document.addEventListener("DOMContentLoaded", ()=>{
-    loadProducts();
-});
+document.addEventListener("DOMContentLoaded", loadProducts);
 
-// Открыть меню
-categories_menu_icon.addEventListener("click", changeCategoriesVisability);
-parameters_menu_icon.addEventListener("click", changeParametersVisability);
+// Обработчики для открытия/закрытия меню
+categoriesMenuIcon.addEventListener("click", changeCategoriesVisibility);
+parametersMenuIcon.addEventListener("click", changeParametersVisibility);
 
-// Закрыть меню
-categories_menu_close.addEventListener("click", changeCategoriesVisability);
-parameters_menu_close.addEventListener("click", changeParametersVisability);
+// Закрытие меню
+categoriesMenuClose.addEventListener("click", changeCategoriesVisibility);
+parametersMenuClose.addEventListener("click", changeParametersVisibility);
