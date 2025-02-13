@@ -20,12 +20,33 @@ const toggleMenuVisibility = (menu) => {
   menu.classList.toggle("active");
 };
 
-
 categoriesMenuIcon.addEventListener("click", () => toggleMenuVisibility(categoriesMenu));
 categoriesMenuClose.addEventListener("click", () => toggleMenuVisibility(categoriesMenu));
 
 paramsMenuIcon.addEventListener("click", () => toggleMenuVisibility(paramsMenu));
 paramsMenuClose.addEventListener("click", () => toggleMenuVisibility(paramsMenu));
+
+// Получение параметров из URL
+function getQueryParams() {
+  const params = new URLSearchParams(window.location.search);
+  console.log(params.get("category"))
+  return {
+    category: params.get("category") || "", // Получаем категорию
+  };
+}
+
+// Устанавливаем категорию из URL при загрузке
+function updateFiltersFromURL() {
+  const { category } = getQueryParams();
+  if (category) {
+    selectedCategories = [category]; // Фильтруем по категории
+    document.querySelectorAll('.category-checkbox').forEach(checkbox => {
+      if (checkbox.value === category) {
+        checkbox.checked = true; // Чекбокс становится активным
+      }
+    });
+  }
+}
 
 // Загружаем все продукты
 async function fetchAllProducts() {
@@ -36,6 +57,7 @@ async function fetchAllProducts() {
     }
     const data = await response.json();
     allProducts = data.products;
+    updateFiltersFromURL(); // Фильтруем сразу при загрузке
     renderUI(currentPage);
     renderPagination();
   } catch (error) {
@@ -57,43 +79,33 @@ function filterProductsByCategories(products) {
   });
 }
 
-
 function parsePrice(priceString) {
-  // Извлекаем числовую часть из строки, например, "9,00zł"
   const regex = /(\d+,\d+)(zł)?/;
   const match = priceString.match(regex);
-
   if (match) {
-    // Заменяем запятую на точку и парсим в число с плавающей запятой
     return parseFloat(match[1].replace(',', '.'));
   }
-  return 0; // Если цена не найдена, возвращаем 0
+  return 0;
 }
 
 function sortProducts(products) {
   switch (selectedSort) {
     case 'popularity':
       return products.sort((a, b) => b.popularity - a.popularity);
-
     case 'rating':
       return products.sort((a, b) => b.rating - a.rating);
-
     case 'newest':
       return products.sort((a, b) => new Date(b.date_added) - new Date(a.date_added));
-
     case 'price-asc':
       return products.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
-
     case 'price-desc':
-      console.log(products.sort((a, b) => parsePrice(b.price) - parsePrice(a.price)));
       return products.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
-
     default:
       return products;
   }
 }
 
-// Отображение продуктов для текущей страницы
+// Отображение продуктов
 function renderUI(page) {
   productsContainer.innerHTML = "";
   const startIndex = (page - 1) * productsPerPage;
@@ -104,7 +116,7 @@ function renderUI(page) {
   const productsToDisplay = sortedProducts.slice(startIndex, endIndex);
   
   productsToDisplay.forEach((product) => {
-    productsContainer.innerHTML += createProductCard(product); // Ваш метод создания карточки продукта
+    productsContainer.innerHTML += createProductCard(product);
   });
 }
 
@@ -136,7 +148,7 @@ function renderPagination() {
   });
 }
 
-// Обработчик изменения состояния фильтров категорий
+// Обработчик изменения фильтров категорий
 document.querySelectorAll('.category-checkbox').forEach(checkbox => {
   checkbox.addEventListener('change', (e) => {
     const categoryValue = e.target.value;
@@ -149,7 +161,7 @@ document.querySelectorAll('.category-checkbox').forEach(checkbox => {
   });
 });
 
-// Обработчик изменения параметров сортировки
+// Обработчик изменения сортировки
 document.querySelectorAll('.parameters-radio').forEach(radio => {
   radio.addEventListener('change', (e) => {
     selectedSort = e.target.value;
