@@ -120,6 +120,7 @@ header img {
 .modal-menu .right .bottom {
   width: 80%;
   padding-left: 15px;
+  padding-top: 20px;
 }
 
 .modal-menu .left .bottom {
@@ -285,12 +286,19 @@ header img {
 
 #cart-count{
   position: absolute;
-  right: 15%;
-  bottom: 0;
+  right: 1px;
+  bottom: 1px;
   color: #fff;
   z-index: 10;
 }
 @media screen and (max-width: 768px) {
+  #cart-count{
+    position: absolute;
+    right: 6px;
+    bottom: 1px;
+    color: #fff;
+    z-index: 10;
+  }
   .right-group div{
     margin: 0;
   }

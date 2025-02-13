@@ -1,0 +1,28 @@
+h2 {
+  text-align: left;
+  font-family: Playfair Display;
+  font-weight: 900;
+  font-style: italic;
+  color: rgb(166, 130, 100);
+  font-size: 18px;
+}
+
+p {
+  font-family: Playfair Display;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  color: #a68264;
+}
+
+.content {
+  height: 80%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  flex-direction: column;
+}
+.block{
+    height: 25%;
+}

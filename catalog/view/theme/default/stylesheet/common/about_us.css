@@ -1,0 +1,39 @@
+h2{
+    text-align: center;
+    font-family: Playfair Display;
+    font-weight: 900;
+    font-style: italic;
+    color: #5e4436;
+}
+
+.block h2{
+    text-align: left;
+    font-family: Playfair Display;
+    font-weight: 900;
+    font-style: italic;
+    color: rgb(166, 130, 100);
+}
+
+.content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.block{
+    width: 45%;
+    margin: 15px;
+}
+.block p{
+    font-family: Playfair Display;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #a68264;
+}
+
+@media screen and (max-width: 768px) {
+    .block{
+        width: 100%;
+        margin: 15px;
+    }
+}
