@@ -392,3 +392,5 @@
 2025-02-12 18:42:06 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
 2025-02-12 20:00:22 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
 2025-02-12 20:00:27 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
+2025-02-13 21:03:13 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
+2025-02-13 21:48:41 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130

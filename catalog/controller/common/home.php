@@ -10,7 +10,7 @@ class ControllerCommonHome extends Controller {
 	
 		$data['carousel'] = $this->load->view('common/carousel');
 		$data['promotion'] = $this->load->view('common/promotion');
-		$data['categories_carousel'] = $this->load->view('common/categories_carousel');
+		$data['categories_list'] = $this->load->view('common/categories_list');
 		$data['product'] = $this->load->view('product/product');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
