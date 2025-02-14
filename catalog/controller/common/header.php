@@ -103,23 +103,25 @@ class ControllerCommonHeader extends Controller {
 		$data['address'] = nl2br($this->config->get('config_address'));
 		$data['email'] = $this->config->get('config_email'); 
 		$data['informations'] = array();
-
-		foreach ($this->model_catalog_information->getInformations() as $result) {
-			if ($result['bottom']) {
-				$data['informations'][] = [
-					'title' => $result['title'],
-					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id']),
-					'active' => (!empty($this->request->get['information_id']) and $this->request->get['information_id'] == $result['information_id'])
-				];
-			}
-			if($result['information_id'] == 7) {
-				$data['wholesale'] = [
-					'title' => $result['title'],
-					'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id']),
-					'active' => (!empty($this->request->get['information_id']) and $this->request->get['information_id'] == $result['information_id'])
-				];
+		if($this->model_catalog_information){
+			foreach ($this->model_catalog_information->getInformations() as $result) {
+				if ($result['bottom']) {
+					$data['informations'][] = [
+						'title' => $result['title'],
+						'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id']),
+						'active' => (!empty($this->request->get['information_id']) and $this->request->get['information_id'] == $result['information_id'])
+					];
+				}
+				if($result['information_id'] == 7) {
+					$data['wholesale'] = [
+						'title' => $result['title'],
+						'href'  => $this->url->link('information/information', 'information_id=' . $result['information_id']),
+						'active' => (!empty($this->request->get['information_id']) and $this->request->get['information_id'] == $result['information_id'])
+					];
+				}
 			}
 		}
+		
 		
 		foreach($data['links'] as $key => $link) {
 			if($link['rel'] == 'icon') unset($data['links'][$key]);
