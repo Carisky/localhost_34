@@ -4,17 +4,13 @@ class ControllerProductAll extends Controller {
         $this->load->model('catalog/product');
         $this->load->model('catalog/category'); // Загрузка модели категорий
 
-        // Получение всех товаров
-        $filter_data = [
-            'start' => 0,
-            'limit' => 0, // 0 - получить все товары
-        ];
-        $products = $this->model_catalog_product->getProducts($filter_data);
+        $products = $this->model_catalog_product->getProducts();
 
         // Формирование ответа
         $product_data = [];
         foreach ($products as $product) {
             // Получаем категории товара
+
             $categories = $this->model_catalog_product->getCategories($product['product_id']);
             $category_names = [];
             foreach ($categories as $category) {
@@ -46,7 +42,7 @@ class ControllerProductAll extends Controller {
                 'name'        => $product['name'],
                 'price'       => $formatted_price,  // Цена с налогом
                 'image_url'   => $product['image'],
-                'rating'      => (int)$product['rating'],
+                'rating'      => $product['rating'],
                 'categories'  => $category_names, // Категории
                 'tax_rate'    => $tax_percentage // Процент налога
             ];

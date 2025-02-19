@@ -1,9 +1,11 @@
 <?php
-class ControllerCommonShop extends Controller {
+class ControllerCommonShop extends Controller
+{
     /**
      * @return void
      */
-    public function index(): void {
+    public function index(): void
+    {
         $data['footer'] = $this->load->controller('common/footer');
         $data['header'] = $this->load->controller('common/header');
 
@@ -32,7 +34,7 @@ class ControllerCommonShop extends Controller {
             $shop_categories[] = [
                 'name' => $category['name'],
                 // Формируем ссылку по типу index.php?route=common/shop&category=НазваниеКатегории
-                'href' => $this->url->link('common/shop', 'category=' . urlencode($category['name']))
+                'href' => $this->url->link('product/category', 'path=' . $category['category_id'])
             ];
         }
 

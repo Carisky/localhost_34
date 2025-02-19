@@ -141,5 +141,47 @@ if (isMobile()) {
   firstPage.classList.add("active");
   secondPage.classList.add("active");
 }
+document.addEventListener('DOMContentLoaded', function() {
+  if (isMobile()) {
+    // Скрываем кнопку переключения страниц
+    togglePageBtn.style.display = 'none';
+
+    // Собираем элементы li из обоих блоков меню
+    let combinedItems = [];
+    const firstPageItems = firstPage.querySelectorAll('ul li');
+    const secondPageItems = secondPage.querySelectorAll('ul li');
+
+    firstPageItems.forEach(item => combinedItems.push(item.outerHTML));
+    secondPageItems.forEach(item => combinedItems.push(item.outerHTML));
+
+    // Создаём контейнер для объединённого меню
+    const unifiedMenu = document.createElement('div');
+    unifiedMenu.classList.add('unified-menu');
+
+    // Добавляем список
+    unifiedMenu.innerHTML = `<ul>${combinedItems.join('')}</ul>`;
+
+    // Находим блок с социальными иконками через getElementById
+    const socialsBlock = document.getElementById('socials');
+    if (socialsBlock) {
+      unifiedMenu.appendChild(socialsBlock.cloneNode(true));
+    }
+
+    // Находим блок с контактной информацией (menu-bottom)
+    const menuBottomBlock = document.getElementById('menu-bottom');
+    if (menuBottomBlock) {
+      unifiedMenu.appendChild(menuBottomBlock.cloneNode(true));
+    }
+
+    // Вставляем объединённое меню в начало modalMenu
+    modalMenu.insertBefore(unifiedMenu, modalMenu.firstChild);
+
+    // Скрываем оригинальные блоки меню
+    firstPage.style.display = 'none';
+    secondPage.style.display = 'none';
+  }
+});
+
+
 
 fetchCartItems();

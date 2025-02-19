@@ -4,9 +4,9 @@
 
 {% if redirect %}
 	 <script>
-		var redi = '{{redirect}}';
-		//window.location.href = '{{redirect}}';
-	</script>
+			var redi = '{{redirect}}';
+			//window.location.href = '{{redirect}}';
+		</script>
 	{% if logged %}
 
 		{% else %}
@@ -172,23 +172,25 @@
 				</div>
 			{% endfor %}
 		</div>
-		<div class="wholesale-totals df jce">
-			<table>
-				<tbody>
-					<tr>
-						<td>Cena</td>
-						<td data-totals-subtotal>{{totals.subtotal}}</td>
-					</tr>
-					<tr>
-						<td>Rabat</td>
-						<td data-totals-discount>{{totals.discount}}</td>
-					</tr>
-					<tr>
-						<td>Wszystko</td>
-						<td data-totals-total>{{totals.total}}</td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="wrappeer">
+			<div class="wholesale-totals df jce">
+				<table>
+					<tbody>
+						<tr>
+							<td>Cena</td>
+							<td data-totals-subtotal>{{totals.subtotal}}</td>
+						</tr>
+						<tr>
+							<td>Rabat</td>
+							<td data-totals-discount>{{totals.discount}}</td>
+						</tr>
+						<tr>
+							<td>Wszystko</td>
+							<td data-totals-total>{{totals.total}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<div class="confirm df jce">
 			<button type="button" class="btn df aic jcc" onclick="confirm()">
@@ -200,106 +202,106 @@
 		</div>
 	</form>
 	 <script>
-	var success = 'Dziękujemy za złożenie zamówienia w sklepie. W mailu otrzymasz informacje odnośnie zamówienia';
-	
-	$(document).on('click', '[data-qnt-btn]', function(){
-		var th = $(this),
-			b = th.parents('[data-quantity]'),
-			i = b.find('input'),
-			v = parseInt(i.val());
-		if(th.data('qnt-btn') > 0) {
-			v++;
-			if(b.data('max') > 0 && v > b.data('max')) return false;
-		} else {
-			v = v - 1;
-			if(v < b.data('min')) return false;
-		}
-		i.val(v);
-		if(th.parents('[data-cart-item]').length) cart.update(b.data('cart'), v);
-		if(typeof(wholesaleUpdate) == 'function') wholesaleUpdate(b.parents('[data-product]'), v);
-		if(typeof(cartUpdate) == 'function') cartUpdate(b.parents('[data-product]'), v);
-	});
-	$(document).on('input', '[data-input-quantity]', function(){
-		var th = $(this),
-			b = th.parents('[data-quantity]'),
-			v = parseInt(th.val());
-		if(v < b.data('min')) th.val(b.data('min'));
-		if(b.data('max') > 0 && v > b.data('max')) th.val(b.data('max'));
-		if(th.parents('[data-cart-item]').length) cart.update(b.data('cart'), v);
-		if(typeof(wholesaleUpdate) == 'function') wholesaleUpdate(b.parents('[data-product]'), v);
-		if(typeof(cartUpdate) == 'function') cartUpdate(b.parents('[data-product]'), v);
-	});
-	
-		function wholesaleUpdate(p, v) {
-			//console.log(p);
-			//console.log(v);
-			var s = parseInt(p.find('[data-inpack]').text()) * v,
-				t = (Math.round(s * p.data('price')*100) / 100).toFixed(2).replace('.', ','),
-				pm = $('#wholesale').find('[data-mobile-product="'+p.data('product')+'"]');
-			p.find('[data-amount]').val(s);
-			p.find('[data-total]').val(t);
-			p.find('[data-total-text]').text(t);
-			if(v) {
-				p.find('[data-mark]').addClass('active');
-				pm.find('[data-mark]').addClass('active');
+		var success = 'Dziękujemy za złożenie zamówienia w sklepie. W mailu otrzymasz informacje odnośnie zamówienia';
+		
+		$(document).on('click', '[data-qnt-btn]', function(){
+			var th = $(this),
+				b = th.parents('[data-quantity]'),
+				i = b.find('input'),
+				v = parseInt(i.val());
+			if(th.data('qnt-btn') > 0) {
+				v++;
+				if(b.data('max') > 0 && v > b.data('max')) return false;
 			} else {
-				p.find('[data-mark]').removeClass('active');
-				pm.find('[data-mark]').removeClass('active');
+				v = v - 1;
+				if(v < b.data('min')) return false;
 			}
-			//$('body').append(loader);
-			$.ajax({
-				url: 'index.php?route=extension/module/nr_wholesale/calculate',
-				type: 'post',
-				dataType: 'json',
-				data: $('#wholesale').serialize(),
-				success: function(json) {
-					//$('#loader').remove();
-					$('[data-totals-subtotal]').html(json.subtotal);
-					$('[data-totals-discount]').html(json.discount);
-					$('[data-totals-total]').html(json.total);
-				},
-				error: function(data) {
-					//$('#loader').remove();
-					console.log(data.responseText);
-				}
-			});
-		}
-		function confirm() {
-			$('[data-error]').removeClass('input-error').find('.form-error').text('').hide();
-			//$('body').append(loader);
-			$.ajax({
-				url: 'index.php?route=extension/module/nr_wholesale/order',
-				type: 'post',
-				dataType: 'json',
-				data: $('#wholesale').serialize(),
-				success: function(json) {
-					//$('#loader').remove();
-					if(json.error) {
-						$.each(json.error, function(i, v){
-							$('[data-error="'+i+'"]').addClass('input-error').find('.form-error').text(v).show();
-						});
-					} else if(json.order_id) {
-						nrShowMessage(success, 1);
-					}
-				},
-				error: function(data) {
-					//$('#loader').remove();
-					console.log(data.responseText);
-				}
-			});
-		}
-		$('#input-address').on('change', function() {
-			//$('body').append(loader);
-			$.ajax({
-				url: 'index.php?route=extension/module/nr_wholesale/change_address',
-				type: 'post',
-				data: $('#wholesale').serialize(),
-				success: function(data) {window.location.reload();},
-				error: function(data) {
-					//$('#loader').remove();
-					console.log(data.responseText);
-				}
-			});
+			i.val(v);
+			if(th.parents('[data-cart-item]').length) cart.update(b.data('cart'), v);
+			if(typeof(wholesaleUpdate) == 'function') wholesaleUpdate(b.parents('[data-product]'), v);
+			if(typeof(cartUpdate) == 'function') cartUpdate(b.parents('[data-product]'), v);
 		});
-	</script>
+		$(document).on('input', '[data-input-quantity]', function(){
+			var th = $(this),
+				b = th.parents('[data-quantity]'),
+				v = parseInt(th.val());
+			if(v < b.data('min')) th.val(b.data('min'));
+			if(b.data('max') > 0 && v > b.data('max')) th.val(b.data('max'));
+			if(th.parents('[data-cart-item]').length) cart.update(b.data('cart'), v);
+			if(typeof(wholesaleUpdate) == 'function') wholesaleUpdate(b.parents('[data-product]'), v);
+			if(typeof(cartUpdate) == 'function') cartUpdate(b.parents('[data-product]'), v);
+		});
+		
+			function wholesaleUpdate(p, v) {
+				//console.log(p);
+				//console.log(v);
+				var s = parseInt(p.find('[data-inpack]').text()) * v,
+					t = (Math.round(s * p.data('price')*100) / 100).toFixed(2).replace('.', ','),
+					pm = $('#wholesale').find('[data-mobile-product="'+p.data('product')+'"]');
+				p.find('[data-amount]').val(s);
+				p.find('[data-total]').val(t);
+				p.find('[data-total-text]').text(t);
+				if(v) {
+					p.find('[data-mark]').addClass('active');
+					pm.find('[data-mark]').addClass('active');
+				} else {
+					p.find('[data-mark]').removeClass('active');
+					pm.find('[data-mark]').removeClass('active');
+				}
+				//$('body').append(loader);
+				$.ajax({
+					url: 'index.php?route=extension/module/nr_wholesale/calculate',
+					type: 'post',
+					dataType: 'json',
+					data: $('#wholesale').serialize(),
+					success: function(json) {
+						//$('#loader').remove();
+						$('[data-totals-subtotal]').html(json.subtotal);
+						$('[data-totals-discount]').html(json.discount);
+						$('[data-totals-total]').html(json.total);
+					},
+					error: function(data) {
+						//$('#loader').remove();
+						console.log(data.responseText);
+					}
+				});
+			}
+			function confirm() {
+				$('[data-error]').removeClass('input-error').find('.form-error').text('').hide();
+				//$('body').append(loader);
+				$.ajax({
+					url: 'index.php?route=extension/module/nr_wholesale/order',
+					type: 'post',
+					dataType: 'json',
+					data: $('#wholesale').serialize(),
+					success: function(json) {
+						//$('#loader').remove();
+						if(json.error) {
+							$.each(json.error, function(i, v){
+								$('[data-error="'+i+'"]').addClass('input-error').find('.form-error').text(v).show();
+							});
+						} else if(json.order_id) {
+							nrShowMessage(success, 1);
+						}
+					},
+					error: function(data) {
+						//$('#loader').remove();
+						console.log(data.responseText);
+					}
+				});
+			}
+			$('#input-address').on('change', function() {
+				//$('body').append(loader);
+				$.ajax({
+					url: 'index.php?route=extension/module/nr_wholesale/change_address',
+					type: 'post',
+					data: $('#wholesale').serialize(),
+					success: function(data) {window.location.reload();},
+					error: function(data) {
+						//$('#loader').remove();
+						console.log(data.responseText);
+					}
+				});
+			});
+		</script>
 {% endif %}

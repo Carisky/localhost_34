@@ -29,7 +29,6 @@ const toggleMenuVisibility = (menu) => {
 // Получение параметров из URL
 function getQueryParams() {
   const params = new URLSearchParams(window.location.search);
-  console.log(params.get("category"))
   return {
     category: params.get("category") || "", // Получаем категорию
   };
@@ -57,6 +56,7 @@ async function fetchAllProducts() {
     }
     const data = await response.json();
     allProducts = data.products;
+    console.log(data.products)
     updateFiltersFromURL(); // Фильтруем сразу при загрузке
     renderUI(currentPage);
     renderPagination();

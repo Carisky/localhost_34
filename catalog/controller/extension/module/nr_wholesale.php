@@ -121,7 +121,7 @@ class ControllerExtensionModuleNrWholesale extends Controller {
 			$data['cart_products'] = empty($this->session->data['wholesale_products']) ? [] : $this->session->data['wholesale_products'];
 
 			$data['totals'] = $this->calculate(false);
-
+			
 		}
 
 		

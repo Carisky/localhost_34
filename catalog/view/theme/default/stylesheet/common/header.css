@@ -322,7 +322,18 @@ header img {
   .modal-menu .left ul {
     margin: 0;
   }
-
+  .modal-menu ul li{
+    text-align: left;
+  }
+  #socials{
+    width: 40%;
+    padding-left: 15px;
+    margin-bottom: 15px;
+  }
+  #menu-bottom{
+    padding-left: 15px;
+    display: block;
+  }
   .modal-menu .right {
     display: none;
     width: 100%;

@@ -82,6 +82,7 @@ footer{
 }
 
 .additional{
+    justify-content: center;
     margin-top: 40px;
     display: flex;
     flex-wrap: wrap;

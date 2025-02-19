@@ -1,7 +1,7 @@
 function createProductCard(product) {
     const imageUrl = `image/${product.image_url}`;
     const defaultImage = 'image/no_image.png'; // Путь к дефолтному изображению
-
+    console.log(product.rating)
     return `
         <div class="product-card">
             <div class="product-header">
