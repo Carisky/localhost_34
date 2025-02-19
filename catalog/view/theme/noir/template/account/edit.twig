@@ -1,0 +1,127 @@
+{{ header }}
+<div id="account" class="page-wrapper container page-account">
+	<div class="page-title df aic jcc" data-pannel-open>
+		<span class="aic jcc"><svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#user"></use></svg></span>
+		Twoje konto
+		<svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#trigger"></use></svg>
+	</div>
+	<div class="breadcrumbs df fww">
+    {% for breadcrumb in breadcrumbs %}
+		{% if breadcrumb.href %}
+		<a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+		<i>/</i>
+		{% else %}
+		<span>{{ breadcrumb.text }}</span>
+		{% endif %}
+    {% endfor %}
+	</div>
+	<div class="account-wrapper df">
+		{{ column_left }}
+		<div class="main-column">
+			<h1 class="account-title">{{ heading_title }}</h1>
+			<form id="customer-profile">
+				{% for custom_field in custom_fields %}
+				{% if custom_field.type == 'radio' %}
+				<div class="form-block form-radio inline df">
+					<div class="form-block-label">{{ custom_field.name }}</div>
+					<div class="form-block-box df">
+						{% for key, custom_field_value in custom_field.custom_field_value %}
+						<label class="checkbox radio df aic">
+							<input type="radio" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" 
+								value="{{ custom_field_value.custom_field_value_id }}"
+								{% if (not key and not account_custom_field[custom_field.custom_field_id]) or (account_custom_field[custom_field.custom_field_id] and custom_field_value.custom_field_value_id == account_custom_field[custom_field.custom_field_id]) %}
+								 checked
+								{% endif %}
+							>
+							<b></b>
+							<span>{{ custom_field_value.name }}</span>
+						</label>
+						{% endfor %}
+					</div>
+				</div>
+				{% endif %}
+				{% endfor %}
+				<div class="form-block df">
+					<div class="form-block-label">{{ entry_firstname }}</div>
+					<div class="form-block-box"  data-error="firstname">
+						<input type="text" name="firstname" value="{{ firstname }}" placeholder="{{ entry_firstname }}"/>
+						<div class="form-error"></div>
+					</div>
+				</div>
+				<div class="form-block df">
+					<div class="form-block-label">{{ entry_lastname }}</div>
+					<div class="form-block-box" data-error="lastname">
+						<input type="text" name="lastname" value="{{ lastname }}" placeholder="{{ entry_lastname }}" />
+						<div class="form-error"></div>
+					</div>
+				</div>
+				<div class="form-block df">
+					<div class="form-block-label">{{ entry_email }}</div>
+					<div class="form-block-box" data-error="email">
+						<input type="email" name="email" value="{{ email }}" placeholder="{{ entry_email }}" />
+						<div class="form-error"></div>
+					</div>
+				</div>
+				<div class="form-block df">
+					<div class="form-block-label">{{ entry_telephone }}</div>
+					<div class="form-block-box"  data-error="telephone">
+						<input type="tel" name="telephone" value="{{ telephone }}" placeholder="{{ entry_telephone }}" />
+						<div class="form-error"></div>
+					</div>
+				</div>
+				{% for custom_field in custom_fields %}
+				{% if custom_field.type == 'text' %}
+				<div class="form-block df">
+					<div class="form-block-label">{{ custom_field.name }}</div>
+					<div class="form-block-box" data-error="custom_field_{{ custom_field.custom_field_id }}">
+						<input type="{{custom_field.type}}" name="custom_field[{{ custom_field.location }}][{{ custom_field.custom_field_id }}]" 
+							value="{{ account_custom_field[custom_field.custom_field_id] }}" placeholder="{{ custom_field.name }}" />
+						<div class="form-error"></div>
+					</div>
+				</div>
+				{% endif %}
+				{% endfor %}
+				<div class="form-block df">
+					<div class="form-block-label">Nowe hasło<div>Opcjonalne</div></div>
+					<div class="form-block-box" data-error="password">
+						<input type="password" name="password" value="" placeholder="********" />
+						<div class="form-error"></div>
+					</div>
+				</div>
+				<div class="form-bottom">
+					<div class="form-block" data-error="agree">
+						<label class="checkbox large-box df small-text">
+							<input type="checkbox" name="agree" value="1">
+							<b></b>
+							<div>
+								Wyrażam zgodę na przetwarzanie moich danych w związku z obsługą konta klienta. Akceptuję Regulamin i Politykę prywatności.
+								<span>Zapoznaj się: Regulamin sklepu oraz Polityka prywatności i cookies<span>
+							</div>
+						</label>
+						<div class="form-error"></div>
+					</div>
+					<div class="form-block">
+						<label class="checkbox large-box df small-text">
+							<input type="checkbox" name="newsletter" value="1"{{customer_info.newsletter ? ' checked' }}>
+							<b></b>
+							<div>Wyrażam zgodę na wysyłanie do mnie informacji handlowych na wskazany adres oraz na przetwarzanie moich danych w związku z obsługą newsletteru.</div>
+						</label>
+					</div>
+				</div>
+			</form>
+			<button type="button" class="form-btn btn" onclick="saveProfile()">Zapisz</button>
+		</div>
+	</div>
+	{{ content_top }}
+	{{ content_bottom }}
+	{{ column_right }}
+</div>
+{{ footer }}
+{% if success %}
+<script>nrShowMessage('{{success}}', 1);</script>
+{% endif %}
+{% if error_warning %}
+<script>nrShowMessage('{{error_warning}}');</script>
+{% endif %}
+</body>
+</html>

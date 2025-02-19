@@ -1,0 +1,105 @@
+{{ header }}
+<div id="blog" class="blog-article">
+	<div class="heading-image posr df fdc jcc ta3">
+		<div class="container">
+			<div class="breadcrumbs ta3 posr">
+			{% for breadcrumb in breadcrumbs %}
+				{% if loop.last %}
+				<span>{{ breadcrumb.text }}</span>
+				{% elseif loop.index != 2 %}
+				<a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+				<i>/</i>
+				{% endif %}
+			{% endfor %}
+			</div>
+			<h1 class="heading-title posr ta">{{ heading_title }}</h1>
+		</div>
+		<div class="placeholder ta3"></div>
+		<div class="inner posa ta3">
+			<img srcset="{{image1}} 1600w, {{image}} 3600w" src="{{image}}" alt="" class="posa ta3">
+		</div>
+		<div class="image-mob" style="background-image:url('{{image2}}')"></div>
+	</div>
+	<div class="container">
+		<article>
+			<div class="content">{{ description }}</div>
+		</article>
+	</div>	
+	{% if articles %}
+	<h3 class="article-title2 cnt">Może Ci się spodobać również</h3>
+	<div class="slider nr-articles owl-carousel" data-slider>
+		{% for article in articles %}
+		<div class="article-slide top{{article.top}} ta">
+			<div class="inner">
+				<div class="image posr">
+					<div class="inner posa pp df aic jcc">
+						<img src="{{ article.thumb }}" alt="{{ article.name }}">
+					</div>
+				</div>
+				<div class="title">{{ article.name }}</div>
+				<a href="{{ article.href }}" class="pp posa"></a>
+			</div>
+		</div>
+        {% endfor %} 
+	</div>
+	{% endif %}
+	{{ content_top }}
+	{{ column_left }}
+	{{ column_right }}
+	{{ content_bottom }}
+</div>
+{{ footer }}
+<script src="/catalog/view/theme/noir/js/owl.carousel.min.js"></script>
+<script>
+var img_ratio = {{ ratio }},
+	w_width = $(window).width(),
+	hih = $('.heading-image').outerHeight();
+
+$(window).resize(function() {
+	w_width = $(window).width();
+	if(w_width > 767) location.reload();
+});
+
+function setHeading() {
+	if(!img_ratio) return;
+	if(w_width < 768) return;
+	if($(window).scrollTop() > 20) {
+		var imh =  w_width * (img_ratio - 0.5);
+		$('.heading-image').css('height', '50vw');
+		$('.heading-image img').css('top', '-'+imh+'px');
+	} else {
+		$('.heading-image').css('height', hih+'px');
+		$('.heading-image img').css('top', 0);
+	}
+}
+
+if($('[data-slider]').length) {
+	$('[data-slider]').owlCarousel({
+		loop:true,
+		dots: false,
+		autoplay:true,
+		autoplayTimeout:5000,
+		autoplaySpeed: 1000,
+		autoplayHoverPause:true,
+		responsive:{
+			0:{
+				items:1,
+			},
+			421:{
+				items:2,
+			},
+			600:{
+				items:3,
+			},
+			1000:{
+				items:4,
+			},
+			1350:{
+				items:5,
+			}
+		}
+	});
+}
+</script>
+</body>
+</html>

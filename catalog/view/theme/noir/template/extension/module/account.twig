@@ -1,0 +1,28 @@
+<div class="mobile-pannel-title">Twoje konto</div>
+<div class="pannel-close posa" data-pannel-close><svg width="16" height="16"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#cross1"></use></svg></div>
+<div class="list-group">
+	<a href="{{ edit }}" class="list-group-item df aic{{ route == 'account/edit' ? ' active'}}">
+		<svg class="list-icon"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#user_solid"></use></svg>
+		{{ text_edit }}
+	</a> 
+	<a href="{{ address }}" class="list-group-item df aic{{ route == 'account/address' ? ' active'}}">
+		<svg class="list-icon"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#marker"></use></svg>
+		{{ text_address }}
+	</a>
+	<a href="{{ order }}" class="list-group-item df aic{{ route == 'account/order' ? ' active'}}">
+		<svg class="list-icon"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#history"></use></svg>
+		{{ text_order }}
+	</a> 
+	<a href="{{ reward }}" class="list-group-item df aic{{ route == 'account/reward' ? ' active'}}">
+		<svg class="list-icon"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#ticket"></use></svg>
+		{{ text_reward }}
+	</a> 
+	<a href="{{ return }}" class="list-group-item df aic{{ route == 'account/return' ? ' active'}}">
+		<svg class="list-icon"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#back"></use></svg>
+		{{ text_return }}
+	</a> 
+	<a href="{{ logout }}" class="list-group-item df aic">
+		<svg class="list-icon"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#exit"></use></svg>
+		{{ text_logout }}
+	</a>
+ </div>

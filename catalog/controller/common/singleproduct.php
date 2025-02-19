@@ -61,6 +61,8 @@ class ControllerCommonSingleProduct extends Controller
                 'href' => $this->url->link('product/category', 'path=' . $categories[0]['category_id'])
             ];
         }
+        
+        
 
         $data['breadcrumbs'][] = [
             'text' => $data['name']

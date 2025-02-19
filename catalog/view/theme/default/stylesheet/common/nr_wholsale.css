@@ -1,0 +1,368 @@
+/* Универсальное правило для расчёта ширины */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Общие стили страницы */
+body {
+  margin: 0;
+  padding: 0;
+  background: #fcf8f2;
+  font-family: Montserrat, sans-serif;
+  color: #a68264;
+  overflow-x: hidden; /* предотвращает горизонтальный скролл */
+}
+
+/* Ограничение внутреннего содержимого до 90% и центрирование */
+main,
+form#wholesale {
+  width: 90%;
+  margin: 0 auto;
+}
+
+main {
+  padding: 5%;
+}
+
+.mobile-pannel-title, .pannel-close, .mobile-item, .mobile-label {
+  display: none;
+}
+
+.buy-mark.active {
+  background: #65473A;
+}
+.buy-mark {
+  background: #F2E7DE;
+  border-radius: 2px;
+  color: #F9F0E8;
+  width: 19px;
+  height: 19px;
+  margin: 0 auto;
+}
+.buy-mark svg {
+  width: 14px;
+  height: 9px;
+  top: 5px;
+  left: 2px;
+}
+.posa {
+  position: absolute;
+}
+
+.product-list td.image {
+  padding: 10px;
+}
+.product-list td {
+  padding: 20px;
+  border-bottom: 1.5px solid #7640291A;
+  line-height: 1.2;
+}
+
+/* Заголовки */
+h2.product-title3,
+h2 {
+  margin-left: 20px;
+  font-family: Playfair Display, serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42.66px;
+  color: #a68264;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-family: Playfair Display, serif;
+  font-size: 20px;
+  color: #987253;
+  margin-bottom: 15px;
+}
+
+/* Блок входа/регистрации */
+.popup-bottomRegister {
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.icon-wrap.account-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* растягиваем по всей ширине контейнера */
+  max-width: 250px; /* но не более 250px */
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: #fff;
+  text-decoration: none;
+  color: #987253;
+  transition: background 0.3s;
+}
+
+.icon-wrap.account-icon:hover {
+  background: #f8f0e8;
+}
+
+.icon-wrap.account-icon svg {
+  fill: #a68264;
+  margin-right: 8px;
+}
+
+.icon-wrap.account-icon h3 {
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Форма оптового заказа */
+form#wholesale {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 20px auto;
+}
+
+/* Контейнер с данными покупателя */
+.wholesale-customer-data {
+  display: flex;
+  flex-wrap: wrap; /* перенос строк при нехватке места */
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.column {
+  flex: 1;
+  min-width: 300px;
+}
+
+/* Стили для блоков ввода - все поля на всю ширину */
+.form-block {
+  margin-bottom: 15px;
+}
+
+.form-block input,
+.form-block textarea,
+.form-block select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background: #fcf8f2;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  color: #6b4424;
+}
+
+.form-block input::placeholder,
+.form-block textarea::placeholder {
+  color: #c7a992;
+}
+
+.textarea-wrapper textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+.wholesale-products .product-list table td,
+.wholesale-products .product-list table th {
+  background: transparent;
+}
+/* Таблицы с продуктами */
+.wholesale-products {
+  margin-top: 20px;
+}
+
+/* Таблицы с продуктами на десктопе */
+.wholesale-products .product-list table {
+  width: 90%;
+  margin: 0 auto; /* центрируем таблицу */
+  border-collapse: separate; /* используем отдельные ячейки */
+  border-spacing: 10px 15px; /* 10px между столбцами и 15px между строками */
+}
+
+
+.wholesale-products table th {
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background: #fcf8f2;
+  color: #a68264;
+}
+
+.wholesale-products table td {
+  text-align: center;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19.5px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  color: #a68264;
+}
+
+.wholesale-products table td.image img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Управление количеством товара */
+.cart-quantity {
+  display: inline-flex;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  overflow: hidden;
+  align-items: center;
+}
+
+.cart-quantity a.gnt-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  color: #a68264;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border-right: 1px solid #ddd;
+}
+.wholesale-customer-data {
+  margin: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* расстояние между строками */
+}
+
+.wholesale-customer-data .column {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.cart-quantity a.gnt-btn:last-child {
+  border-right: none;
+}
+.input-hidden.cnt {
+  text-align: center;
+  padding: 5px 0;
+  border: none;
+  font-weight: 600;
+  background: transparent;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  color: #6b4424;
+}
+
+.cart-quantity input.cnt {
+  width: 50px;
+  text-align: center;
+  border: none;
+  background: #fcf8f2;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  color: #6b4424;
+}
+
+/* Итоговая сумма заказа */
+.wholesale-totals {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.wholesale-totals table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wholesale-totals table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  color: #a68264;
+}
+
+.wholesale-totals table td:first-child {
+  text-align: left;
+}
+
+/* Кнопка подтверждения заказа */
+.confirm {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.confirm .btn {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-family: Montserrat, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #987253;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.confirm .btn:hover {
+  background: #f8f0e8;
+}
+
+.confirm .btn svg {
+  fill: #a68264;
+  margin-left: 8px;
+}
+
+/* Мобильная адаптация */
+@media screen and (max-width: 768px) {
+  .wholesale-customer-data {
+    flex-direction: column;
+  }
+  .wholesale-products .product-list table,
+  .wholesale-products .product-list table thead,
+  .wholesale-products .product-list table tbody,
+  .wholesale-products .product-list table th,
+  .wholesale-products .product-list table td,
+  .wholesale-products .product-list table tr {
+    display: block;
+  }
+  .wholesale-products .product-list table thead {
+    display: none;
+  }
+  .wholesale-products .product-list table tr {
+    margin-bottom: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 10px;
+  }
+  .wholesale-products .product-list table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+  }
+  /* Убираем белый фон у ячеек (td и th) */
+  .wholesale-products .product-list table td,
+  .wholesale-products .product-list table th {
+    background: transparent;
+  }
+  .wholesale-products .product-list table td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #a68264;
+  }
+}

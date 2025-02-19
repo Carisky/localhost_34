@@ -24,30 +24,17 @@
 		</div>
 	{% endif %}
 
-	<div id="categories-menu" class="modal-menu">
-		<div class="top">
-			<div class="title">Kategorie produktów</div>
-			<span class="close-btn" id="categories-menu-close">&times;</span>
-		</div>
-		<div class="checkbox-container">
-			<label><input type="checkbox" class="category-checkbox" value="konfitury">
-				Konfitury</label>
-			<label><input type="checkbox" class="category-checkbox" value="kremy smarowidla">
-				Kremy i smarowidła</label>
-			<label><input type="checkbox" class="category-checkbox" value="maluchy w spichlerzu">
-				Maluchy w Spichlerzu</label>
-			<label><input type="checkbox" class="category-checkbox" value="miody">
-				Miody</label>
-			<label><input type="checkbox" class="category-checkbox" value="owoce w syropie">
-				Owoce w syropie</label>
-			<label><input type="checkbox" class="category-checkbox" value="przetwory-warzywne">
-				Przetwory warzywne</label>
-			<label><input type="checkbox" class="category-checkbox" value="syropy">
-				Syropy</label>
-			<label><input type="checkbox" class="category-checkbox" value="zestawy prezentowe">
-				Zestawy prezentowe</label>
-		</div>
-	</div>
+	 <div id="categories-menu" class="modal-menu">
+        <div class="top">
+            <div class="title">Kategorie produktów</div>
+            <span class="close-btn" id="categories-menu-close">&times;</span>
+        </div>
+        <div class="categories-list">
+            {% for category in shop_categories %}
+                <a href="{{ category.href }}">{{ category.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
 
 <div id="parameters-menu" class="modal-menu">
         <div class="top">
@@ -93,13 +80,13 @@
 		</div>
 		<div class="block">
 			<div class="additional-info-title">Lubisz przetwory domowej roboty? Wypróbuj nowe smaki marki Spichlerz!</div>
-			<div class="additional-info-plot">Mamy coś dla wielbicieli kiwi, entuzjastów konfitury pomarańczowej i miłośników dżemu z żurawiny. Proponowane przetwory domowej roboty są wolne od konserwantów i sztucznych barwników. Nie znajdziesz też w nich dużej zawartości cukru – dojrzałe owoce same w sobie są słodkie, więc w konfiturach pełnią role naturalnego konserwantu.</div>
+			<div class="additional-info-plot">Mamy coś dla wielbicieli kiwi, entuzjastów konfitury pomarańczowej i miłośników dżemu z żurawiny. Proponowane przetwory domowej roboty są wolne od konserwantów i sztucznych barwników. Nie znajdziesz też w nich dużej zawartości cukru - dojrzałe owoce same w sobie są słodkie, więc w konfiturach pełnią role naturalnego konserwantu.</div>
 		</div>
 	</div>
 </div>
 
 
 {{ footer }}
-<script type="text/javascript" src="catalog/view/javascript/common.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/products/createProductCard.js"></script>
-<script type="text/javascript" src="catalog/view/javascript/shop/shop.js"></script>
+		<script type="text/javascript" src="catalog/view/javascript/common.js"></script>
+		<script type="text/javascript" src="catalog/view/javascript/products/createProductCard.js"></script>
+		<script type="text/javascript" src="catalog/view/javascript/shop/shop.js"></script>

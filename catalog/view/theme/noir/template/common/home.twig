@@ -1,0 +1,78 @@
+{{ header }}
+<div class="hero posr" data-hero>
+	<div class="inner posa df aic">
+		<div class="layer1 posa"></div>
+		<div class="layer2 posa"></div>
+		<div class="jar posa" data-jar></div>
+		<div class="container posr">
+			<div class="inner">
+				<h1>Idealny prezent na wyjątkową okazję!</h1>
+				<div>Tradycyjne przetwory to wymarzony upominek zarówno dla smakoszy rodzimych, polskich smaków.</div>
+				<a class="btn-arrow dif aic" href="">
+					Do sklepu 
+					<span class="posr ta">
+						<svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#arrow-head"></use></svg>
+					</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="common-home">
+<div class="section1">
+	<div  class="container">
+		{{ column_left }}
+		<div class="about-block df">
+			<div class="left">
+				<img src="/image/catalog/pages/about.jpg" alt="">
+			</div>
+			<div class="right df fdc jcc ais">
+				<h3>naturalne produkty na bazie najwyzszej jakosci</h3>
+				<div class="right-text">
+					<div class="desc">Naturalne produkty na bazie najwyższej jakości adaptogenów i (nie)ziemskich składników.</div>
+					<a href="" class="btn-arrow light violet df aic">
+						Poznaj nas
+						<span class="posr ta">
+							<svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#arrow-head"></use></svg>
+						</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container featured">
+		<h2 class="home-section-title">Najbardziej popularne</h2>
+		{{ content_top }}
+	</div>
+	{{ content_bottom }}
+	{{ column_right }}
+</div>
+</div>
+{{ footer }}
+<script src="/catalog/view/theme/noir/js/owl.carousel.min.js"></script>
+<script>
+if($('[data-slider]').length) {
+	$('[data-slider]').owlCarousel({
+		loop:true,
+		dots: false,
+		center: true,
+		//autoplay:true,
+		autoplayTimeout:5000,
+		autoplaySpeed: 1000,
+		autoplayHoverPause:true,
+		responsive:{
+			0:{
+				items:1,
+			},
+			681:{
+				items:2,
+			},
+			1200:{
+				items:3,
+			}
+		}
+	});
+}
+</script>
+</body>
+</html>

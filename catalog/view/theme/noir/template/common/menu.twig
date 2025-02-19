@@ -1,0 +1,22 @@
+{% if categories %}
+	{% for category in categories %}
+		{% if category.children %}
+		<li class="dropdown{{category.active ? ' active'}}">
+			<a href="{{ category.href }}" class="dropdown-toggle ta" data-toggle="dropdown">{{ category.name }}</a>
+			<div class="dropdown-menu">
+				<div class="dropdown-inner">
+					{% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+					<ul class="list-unstyled">
+						{% for child in children %}
+						<li{{child.active ? ' class="active"'}}><a class="ta" href="{{ child.href }}">{{ child.name }}</a></li>
+						{% endfor %}
+					</ul>
+					{% endfor %}
+				</div>
+			</div>
+		</li>
+		{% else %}
+		<li{{category.active ? ' class="active"'}}><a class="ta" href="{{ category.href }}">{{ category.name }}</a></li>
+		{% endif %}
+	{% endfor %}
+{% endif %} 

@@ -8,15 +8,6 @@
 	<p>masz już konto<a href="index.php?route=account/login"> zaloguj się</a></p>
 
 	<form id="form-register" action="{{ register }}" method="post" data-oc-toggle="ajax">
-		{% if customer_groups|length > 1 %}
-			<div>
-				<select name="customer_group_id" id="input-customer-group">
-					{% for customer_group in customer_groups %}
-						<option value="{{ customer_group.customer_group_id }}" {% if customer_group.customer_group_id == customer_group_id %} selected {% endif %}>{{ customer_group.name }}</option>
-					{% endfor %}
-				</select>
-			</div>
-		{% endif %}
 
 		<div class="form-group">
 			<input type="text" name="firstname" value="" placeholder="{{ entry_firstname }}" id="input-firstname"/>
@@ -57,7 +48,7 @@
 		<div class="form-group">
 			{% if text_agree %}
 				<div>
-					<p>{{ text_agree }}</p>
+					<p>Przeczytałem i zgadzam się z Regulamin sklepu</p>
 					<input type="checkbox" name="agree" value="1"/>
 				</div>
 			{% endif %}

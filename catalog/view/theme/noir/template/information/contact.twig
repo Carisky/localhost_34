@@ -1,0 +1,147 @@
+{{ header }}
+<div id="information-contact" class="information-contact">
+	<div class="heading-image posr df fdc jcc ta3">
+		<div class="container">
+			<div class="breadcrumbs ta3 posr">
+			{% for breadcrumb in breadcrumbs %}
+				{% if loop.last %}
+				<span>{{ breadcrumb.text }}</span>
+				{% elseif loop.index != 2 %}
+				<a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+				<i>/</i>
+				{% endif %}
+			{% endfor %}
+			</div>
+			<h1 class="heading-title posr ta">{{ heading_title }}</h1>
+			<p class="cnt ta">Tradycyjne przetwory to wymarzony upominek zarówno</p>
+		</div>
+		<div class="placeholder ta3"></div>
+		<div class="inner posa ta3">
+			<img srcset="{{image_full1}} 1600w, {{image_full}} 3600w" src="{{image_full}}" alt="" class="posa ta3">
+		</div>
+		<div class="image-mob" style="background-image:url('{{image_full2}}')"></div>
+	</div>
+	<div class="container">
+		<div class="contacts-row df jcsb fww">
+			<div class="column left">
+				<h2 class="product-title3">Nasze dane</h2>
+				<div class="inner">
+					<div class="address-line df aic">
+						<svg width="23" height="23"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#marker"></use></svg>
+						{{address}}
+					</div>
+					<div class="address-line df aic">
+						<svg width="23" height="16"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#mail"></use></svg>
+						<a href="mailto:{{email}}">{{shop_email}}</a>
+					</div>
+					<div class="address-line df aic">
+						<svg width="23" height="18"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#phone"></use></svg>
+						<a href="tel:{{phone_link}}">{{telephone}}</a>
+					</div>
+					{% if facebook %}
+					<div class="address-line df aic">
+						<svg width="23" height="20"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#fb"></use></svg>
+						<a href="{{facebook}}" target="_blank">Facebook</a>
+					</div>
+					{% endif %}
+					{% if instagram %}
+					<div class="address-line df aic">
+						<svg width="23" height="19"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#inst"></use></svg>
+						<a href="{{instagram}}" target="_blank">Instagram</a>
+					</div>
+					{% endif %}
+				</div>
+			</div>
+			<div class="column right">
+				<h2 class="product-title3">NAPISZ DO NAS</h2>
+				<div class="inner">
+					<form id="callback">
+						<div class="form-block">
+							<div class="df jcsb fww">
+								<div class="popup-input name w50" data-error="firstname">
+									<input type="text" name="firstname" placeholder="Imię">
+									<div class="form-error"></div>
+								</div>
+								<div class="popup-input name w50" data-error="lastname">
+									<input type="text" name="lastname" placeholder="Nazwisko">
+									<div class="form-error"></div>
+								</div>
+							</div>
+						</div>
+						<div class="form-block" data-error="phone">
+							<input type="text" name="phone" placeholder="Numer telefonu">
+							<div class="form-error"></div>
+						</div>
+						<div class="form-block" data-error="email">
+							<input type="email" name="email" placeholder="Adres e-mail">
+							<div class="form-error"></div>
+						</div>
+						<div class="form-block" data-error="enquiry">
+							<div class="textarea-wrapper">
+								<textarea name="enquiry"  class="enquiry" placeholder="Komentarz"></textarea>
+							</div>
+						</div>
+						<div class="form-block" data-error="agree">
+							<label class="checkbox large-box df aic">
+								<input type="checkbox" name="agree" value="1">
+								<b></b>
+								<div>Wyrażam zgodę na kontakt oraz akceptuję Politykę Prywatności</div>
+							</label>
+							<div class="form-error"></div>
+						</div>
+					</form>
+					<button type="button" class="form-btn btn df aic jcc" onclick="sendCallback()">WysLij</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ content_top }}
+	{{ content_bottom }}
+</div>
+{{ column_left }}
+{{ column_right }}
+{{ footer }}
+<script>
+var img_ratio = {{ ratio }},
+	w_width = $(window).width(),
+	hih = $('.heading-image').outerHeight();
+	
+$(window).resize(function() {
+	w_width = $(window).width();
+	if(w_width > 767) location.reload();
+});
+
+function setHeading() {
+	if(!img_ratio) return;
+	if(w_width < 768) return;
+	if($(window).scrollTop() > 20) {
+		var imh =  w_width * (img_ratio - 0.5);
+		$('.heading-image').css('height', '50vw');
+		$('.heading-image img').css('top', '-'+imh+'px');
+	} else {
+		$('.heading-image').css('height', hih+'px');
+		$('.heading-image img').css('top', 0);
+	}
+}
+function sendCallback() {
+	$.ajax({
+		url: 'index.php?route=information/contact/send',
+		type: 'post',
+		dataType: 'json',
+		data: $('#callback').serialize(),
+		success: function(json) {
+			checkJson(json);
+			if(json.error) {
+				$.each(json.error, function(i, v){
+					$('[data-error="'+i+'"]').addClass('input-error').find('.form-error').text(v).show();
+				});
+			} else {
+				nrShowMessage(json.success, 1);
+			}
+		},
+		error: function(data) {console.log(data.responseText);}
+	});
+}
+</script>
+</body>
+</html>

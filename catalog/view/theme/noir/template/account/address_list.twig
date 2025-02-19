@@ -1,0 +1,78 @@
+{{ header }}
+<div id="account" class="page-wrapper container page-account">
+	<div class="page-title cnt df aic jcc" data-pannel-open>
+		<span class="aic jcc"><svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#user"></use></svg></span>
+		Twoje konto
+		<svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#trigger"></use></svg>
+	</div>
+	<div class="breadcrumbs df fww">
+    {% for breadcrumb in breadcrumbs %}
+		{% if breadcrumb.href %}
+		<a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+		<i>/</i>
+		{% else %}
+		<span>{{ breadcrumb.text }}</span>
+		{% endif %}
+    {% endfor %}
+	</div>
+	<div class="account-wrapper df">
+		{{ column_left }}
+		<div class="main-column">
+			<h1 class="account-title">Twoje Adresy</h1>
+			{% if success %}
+			<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> {{ success }}</div>
+			{% endif %}
+			{% if error_warning %}
+			<div class="alert alert-warning"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}</div>
+			{% endif %}
+			{% if addresses %}
+			<div class="addresses df fww jcc">
+				{% for key, result in addresses %}
+				<div class="address-block">
+					<div class="inner posr">
+						<div class="top df aic jcsb">
+							<div class="address-title">Moj Adres</div>
+							<div class="address-ordering cnt">{{key + 1}}</div>
+						</div>
+						<div class="address-line">{{result.address.firstname}}</div>
+						<div class="address-line">{{result.address.lastname}}</div>
+						{% if result.address.company %}
+						<div class="address-line">{{result.address.company}}</div>
+						{% endif %}
+						<div class="address-line">{{result.address.address_1}}</div>
+						{% if result.address.postcode %}
+						<div class="address-line">{{result.address.postcode}}</div>
+						{% endif %}
+						<div class="address-line">{{result.address.city}}</div>
+						{% if result.address.custom_field %}
+						<div class="address-line">{{result.address.custom_field[4]}}</div>
+						{% endif %}
+						<div class="buttons posa df aic jcsb">
+							<button type="button" class="btn-hidden edit df aic" onclick="getAddress({{result.address_id}})">
+								<svg width="15" height="15"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#pencil"></use></svg>Uaktualnij
+							</button>
+							<a href = "/index.php?route=account/address/nr_delete&address_id={{ result.address_id }}" class="btn-hidden delete df aic">
+								<svg width="17" height="23"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#trash"></use></svg>Usun
+							</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+			<button type="button" class="form-btn btn" onclick="getAddress()">Utworz nowy adres</button>
+		</div>
+	</div>
+	{{ content_top }}
+	{{ content_bottom }}
+	{{ column_right }}
+</div>
+<div class="hidden">
+	<div class="popup" id="address"></div>
+</div>
+<script>
+	var empty_zone_option = 'Brak opcji';
+</script>
+{{ footer }}
+</body>
+</html>

@@ -1,0 +1,46 @@
+{{ header }}
+<div id="blog" class="page-wrapper container">
+	<div class="breadcrumbs df fww">
+    {% for breadcrumb in breadcrumbs %}
+		{% if loop.last %}
+		<span>{{ breadcrumb.text }}</span>
+		{% else %}
+		<a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+		<i>/</i>
+		{% endif %}
+    {% endfor %}
+	</div>
+	<div class="blog-listing">
+		<div class="blog-top">
+			<h1 class="page-title">{{ heading_title }}</h1>
+			{% if description %}
+			<div class="blog-category-description">{{ description }}</div>
+			{% endif %}
+		</div>
+		{% if articles %}
+		<div class="blog-row df fww jcsb">
+			{% for article in articles %} 
+			<div class="blog-item posr {{ loop.index0 is odd ? 'odd' : 'even' }}">
+				<div class="blog-image posr">
+					<div class="inner posa pp df aic jcc">
+						<img src="{{ article.thumb }}" alt="{{ article.name }}">
+					</div>
+				</div>
+				<h4>{{ article.name }}</h4>
+				<a class="pp posa" href="{{ article.href }}"></a>
+			</div>
+			{% endfor %}
+		</div>
+		{{ pagination }}
+		{% else %}
+		<p>{{ text_empty }}</p>
+		{% endif %}
+		{{ content_top }}
+	</div>
+	{{ content_bottom }}
+	{{ column_right }}
+{{ column_left }}
+</div>
+{{ footer }}
+</body>
+</html>

@@ -1,0 +1,18 @@
+<div class="category-products-row df fww">
+{% for product in products %}
+	<div class="product-item">
+		<div class="inner posr {{product.mpn}}">
+			<a class="category-product-image posr" href="{{ product.href }}">
+				<img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}"/>
+			</a>
+			<a href="{{ product.href }}" class="product-item-title df aie posr">{{ product.name }}</a>
+			<div class="product-item-bottom posr df jcsb ais">
+				<div class="product-item-price">{{ product.special ? product.special : product.price}}</div>
+				<button type="button" class="btn-hidden to" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');">
+					<svg width="24" height="27"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#btn_cart"></use></svg>
+				</button>
+			</div>
+		</div>
+	</div>
+{% endfor %}
+</div>

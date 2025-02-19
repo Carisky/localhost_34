@@ -399,3 +399,7 @@
 2025-02-13 23:21:34 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
 2025-02-13 23:25:52 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
 2025-02-13 23:40:44 - PHP Warning:  Undefined array key "route" in C:\OSPanel\domains\localhost\catalog\controller\common\header.php on line 130
+2025-02-16 9:30:21 - PHP Warning:  Undefined array key "category_name" in C:\OSPanel\domains\localhost\catalog\controller\common\singleproduct.php on line 61
+2025-02-16 9:31:10 - PHP Warning:  Undefined array key "category_name" in C:\OSPanel\domains\localhost\catalog\controller\common\singleproduct.php on line 61
+2025-02-16 9:31:10 - PHP Unknown:  urlencode(): Passing null to parameter #1 ($string) of type string is deprecated in C:\OSPanel\domains\localhost\catalog\controller\common\singleproduct.php on line 61
+2025-02-16 9:37:03 - PHP Notice:  Error: Could not load template default/template/common/header! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37

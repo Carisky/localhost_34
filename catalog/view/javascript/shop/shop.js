@@ -20,11 +20,11 @@ const toggleMenuVisibility = (menu) => {
   menu.classList.toggle("active");
 };
 
-categoriesMenuIcon.addEventListener("click", () => toggleMenuVisibility(categoriesMenu));
-categoriesMenuClose.addEventListener("click", () => toggleMenuVisibility(categoriesMenu));
+ categoriesMenuIcon.addEventListener("click", () => toggleMenuVisibility(categoriesMenu));
+ categoriesMenuClose.addEventListener("click", () => toggleMenuVisibility(categoriesMenu));
 
-paramsMenuIcon.addEventListener("click", () => toggleMenuVisibility(paramsMenu));
-paramsMenuClose.addEventListener("click", () => toggleMenuVisibility(paramsMenu));
+ paramsMenuIcon.addEventListener("click", () => toggleMenuVisibility(paramsMenu));
+ paramsMenuClose.addEventListener("click", () => toggleMenuVisibility(paramsMenu));
 
 // Получение параметров из URL
 function getQueryParams() {
@@ -170,4 +170,4 @@ document.querySelectorAll('.parameters-radio').forEach(radio => {
 });
 
 // Загружаем данные при загрузке страницы
-document.addEventListener("DOMContentLoaded", fetchAllProducts);
+document.addEventListener("DOMContentLoaded", fetchAllProducts());

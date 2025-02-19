@@ -1,0 +1,16 @@
+<div class="cat-row df fww jcc">
+	{% for category in categories %}
+	<div class="category-item category-{{category.category_id}}">
+		<div class="inner posr">
+			<a href="{{ category.href }}" class="posa pp"></a>
+			<div class="category-image posr">
+				<img src="{{category.image}}" alt="{{ category.name }}">
+			</div>
+			<div class="category-name posr df aie">{{ category.name }}</div>
+			<div class="btn-arrow light df aic posa">
+				<span class="posr ta"><svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#arrow-head"></use></svg></span>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+</div>

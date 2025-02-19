@@ -1,0 +1,16 @@
+{% if reviews %}
+{% for review in reviews %}
+<div class="review-item" data-review-item>
+	<div class="review-info df aic jcsb">
+		<div class="rating df aic">
+		{% for i in 1..5 %}
+			<svg class="rating-star {{review.rating < i ? 'empty-star' : 'full-star'}}" width="14" height="14"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#star"></use></svg>
+		{% endfor %}
+		</div>
+		<div class="author">{{ review.author }}</div>
+		<div class="date">{{ review.date_added }}</div>
+	</div>
+	<div class="review-text">{{ review.text }}</div>
+</div>
+{% endfor %}
+{% endif %}

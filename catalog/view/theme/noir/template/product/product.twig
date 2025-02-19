@@ -1,0 +1,285 @@
+{{ header }}
+<div id="product-product" class="page-wrapper gradient posr {{color}}">
+	<div class="container posr">
+		<div class="breadcrumbs">
+		{% for breadcrumb in breadcrumbs %}
+			{% if breadcrumb.href %}
+			<a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+			<i>/</i>
+			{% else %}
+			<span>{{ breadcrumb.text }}</span>
+			{% endif %}
+		{% endfor %}
+		</div>
+		<div class="product-page-top df fww">
+			<div class="product-page-top-left df fdc jcc">
+				<h1 class="poduct-title">{{ heading_title }}</h1>
+				<div class="product-data df aic">
+					<div class="product-weight">{{weight}} g</div>
+					<div class="rating df aic">
+					{% for i in 1..5 %}
+						<svg class="rating-star {{rating < i ? 'empty-star' : 'full-star'}}" width="14" height="14"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#star"></use></svg>
+					{% endfor %}
+					</div>
+				</div>
+				<div class="product-intro">{{intro}}</div>
+			</div>
+			<div class="product-page-top-center df jcc">
+			{% if thumb %}
+				<img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" class="ta">
+			{% endif %}
+			</div>
+			<div class="product-page-top-right df fdc jcc">
+				<div class="price">
+				{% if not special %}
+					{{ price }}
+                {% else %}
+					<span class="price-new">{{ special }}</span> 
+					<span class="price-old">{{ price }}</span> 
+				{% endif %}
+          		</div>
+				{% if discounts %}
+				{% for discount in discounts %}
+				<div class="product-discount">{{ discount.quantity }}{{ text_discount }}{{ discount.price }}</div>
+				{% endfor %}
+				{% endif %}
+				<div class="product-data">
+					<div class="product-data-item df aic">
+						<div class="label">SKU:</div>
+						<div class="value">{{sku}}</div>
+					</div>
+					<div class="product-data-item df aic">
+						<div class="label">{{ text_stock }}</div>
+						<div class="value">{{stock}}</div>
+					</div>
+				</div>
+				<form data-product>
+					<input type="hidden" name="product_id" value="{{ product_id }}">
+					<div id="product" class="df aic">
+						<div class="data-product-top df aic">
+							<div class="product-mobile-price">
+								{% if not special %}
+									{{ price }}
+								{% else %}
+									<span class="price-new">{{ special }}</span> 
+									<span class="price-old">{{ price }}</span> 
+								{% endif %}
+							</div>
+							<div class="quantity df" data-quantity data-min="{{ minimum }}" data-max="{{stock}}">
+								<div class="gnt-btn df jcc aic" data-qnt-btn="0">-</div>
+								<input type="number" name="quantity" value="{{ minimum }}" data-input-quantity class="form-control cnt">
+								<div class="gnt-btn df jcc aic" data-qnt-btn="1">+</div>
+							</div>
+						</div>
+						<button type="button" id="button-cart" class="btn btn-cart df aic jcc">
+							Dodaj<svg width="24" height="27"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#cart"></use></svg>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="product-page-main df fww jcsb">
+			<div class="product-page-main-col left">
+				<div class="product-description">{{ description }}</div>
+				{% if images[0] %}
+				<img class="product-image" src="{{ images[0].thumb }}" alt="">
+				{% endif %}
+			{% if review_status %}
+				<div class="product-reviews">
+					<h2 class="product-title2">Opinie</h2>
+					<div id="review"></div>
+					<div class="reviews-bottom df aic jcsb" data-reviews-bottom>
+						<button  type="button" class="btn-hidden" onclick="loadReviews()" data-loadmore>Load more</button>
+						<button  type="button" class="btn-hidden df aic jcc" onclick="toggleForm()">
+							<svg width="15" height="15"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#pencil"></use></svg>
+							Dodaj opinię
+						</button>
+					</div>
+				</div>
+				{% if review_guest %}
+				<div class="review-form" data-review-form>
+					<h2 class="product-title2">DODAJ OPINIE</h2>
+					<form id="form-review">
+						<div class="rating-block" data-error="rating">
+							<div class="rating-wrapper df aic">
+								<div class="rating-label">Twoja ocena</div>
+								<div class="rating-input">
+									<input type="radio" name="rating" value="5" id="star5">
+									<label for="star5"><svg width="14" height="14"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#star"></use></svg></label>
+									<input type="radio" name="rating" value="4" id="star4">
+									<label for="star4"><svg width="14" height="14"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#star"></use></svg></label>
+									<input type="radio" name="rating" value="3" id="star3">
+									<label for="star3"><svg width="14" height="14"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#star"></use></svg></label>
+									<input type="radio" name="rating" value="2" id="star2">
+									<label for="star2"><svg width="14" height="14"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#star"></use></svg></label>
+									<input type="radio" name="rating" value="1" id="star1">
+									<label for="star1"><svg width="14" height="14"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#star"></use></svg></label>
+								</div>
+							</div>
+							<div class="form-error"></div>
+						</div>
+						<div class="popup-input" data-error="name">
+							<input type="text" name="name" placeholder="{{ entry_name }}" value="{{ customer_name }}">
+							<div class="form-error"></div>
+						</div>
+						<div class="popup-input" data-error="text">
+							<div class="textarea-wrapper">
+								<textarea name="text" rows="3" placeholder="{{ entry_review }}"></textarea>
+							</div>
+							<div class="form-error"></div>
+						</div>
+					</form>
+					<button type="button" class="btn form-btndf aic jcc" onclick="saveReview()">WysLij</button>
+				</div>
+				{% endif %}
+			{% endif %}
+			</div>
+			<div class="product-page-main-col right">
+				{% if images[1] %}
+				<img class="product-image" src="{{ images[1].thumb }}" alt="">
+				{% endif %}
+				<div class="delivery-info">
+					{{ column_right }}
+				</div>
+				{% if images[2] %}
+				<img class="product-image last" src="{{ images[2].thumb }}" alt="">
+				{% endif %}
+			</div>
+		</div>
+		{{ content_top }}
+		{% if products %}
+		<div class="related">
+			<h2 class="poduct-title">Najbardziej popularne</h2>
+			<div class="category-products-row df fww">
+			{% for product in products %}
+				<div class="product-item">
+					<div class="inner posr {{product.mpn}}">
+						<a class="category-product-image posr" href="{{ product.href }}">
+							<img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}"/>
+						</a>
+						<a href="{{ product.href }}" class="product-item-title posr df aie">{{ product.name }}</a>
+						<div class="product-item-bottom posr df jcsb ais">
+							<div class="product-item-price">{{ product.special ? product.special : product.price}}</div>
+							<button type="button" class="btn-hidden to" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');">
+								<svg width="24" height="27"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#btn_cart"></use></svg>
+							</button>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+		{% endif %}
+	</div>
+	{{ content_bottom }}
+</div>	
+{{ footer }}
+<script>
+var rev_page = 1;
+$('#button-cart').on('click', function() {
+	$('body').append(loader);
+	$.ajax({
+		url: 'index.php?route=common/nr_cart/add',
+		type: 'post',
+		dataType: 'json',
+		data: $('[data-product]').serialize(),
+		success: function(json) {
+			$('#loader').remove();
+			if (json.error) console.log(json.error);
+			if (json.success) {
+				minicartRefresh(json.number_products);
+				nrShowMessage(json.success, 1);
+			}
+		},
+        error: function(data) {
+			$('#loader').remove();
+			console.log(data.responseText);
+		}
+	});
+});
+
+if($('#review').length) {
+	$.ajax({
+		url: 'index.php?route=product/product/review&product_id={{ product_id }}',
+		success: function(data) {
+			if(data) {
+				$('#review').html(data);
+				if($('#review').find('[data-review-item]').length < 5) $('[data-loadmore]').hide();
+				$('[data-reviews-bottom]').removeClass('hidden');
+				rev_page++;
+			} else {
+				$('#review').html('<p>Jeszcze brak opinii na temat tego produktu</p>');
+				$('[data-review-form]').addClass('open').show();
+			}
+		},
+		error: function(data) {console.log(data.responseText);}
+	});
+}
+
+function toggleForm() {
+	var b = $('[data-review-form]');
+	b.toggleClass('open');
+	if(b.hasClass('open')) {
+		b.slideDown();
+	} else {
+		b.slideUp();
+	}
+}
+
+function loadReviews() {
+	$('body').append(loader);
+	$.ajax({
+		url: 'index.php?route=product/product/review&product_id={{ product_id }}&page='+rev_page,
+		success: function(data) {
+			$('#loader').remove();
+			if(data) {
+				$('#review').append(data);
+			} else {
+				$('[data-loadmore]').hide();
+			}
+		},
+		error: function(data) {
+			$('#loader').remove();
+			console.log(data.responseText);
+		}
+	});
+	
+}
+
+function saveReview() {
+	$('body').append(loader);
+	var f = $('#form-review');
+	$.ajax({
+		url: 'index.php?route=product/product/write&product_id={{ product_id }}',
+		type: 'post',
+		dataType: 'json',
+		data: f.serialize(),
+		success: function(json) {
+			$('#loader').remove();
+			if (json.error) {
+				$.each(json.error, function(i, v){
+					$('[data-error="'+i+'"]').addClass('input-error').find('.form-error').text(v).show();
+				});
+			}
+			if (json.success) {
+				nrShowMessage(json.success, 1);
+				$('[data-review-form]').removeClass('open').slideUp();
+				f.find('input[name="name"]').val('');
+				f.find('textarea[name="text"]').val('');
+				f.find('input[name="rating"]:checked').prop('checked', false);
+			}
+		}
+	});
+}
+
+$('.product-page-top-center img').on({
+	mouseenter: function() {
+		$('#product-product').addClass('hover');
+	},
+	mouseleave: function () {
+		$('#product-product').removeClass('hover');
+	}
+});
+</script> 
+</body>
+</html>

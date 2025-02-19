@@ -1,0 +1,257 @@
+{% if redirect %}
+<script>
+	var redi = '{{redirect}}';
+	//window.location.href = '{{redirect}}';
+</script>
+	{% if logged %}
+		
+	{% else %}
+		<h2>Zaloguj się lub zarejestruj</h2>
+
+		<div class="popup-bottomRegister" style="display: inline-block; margin-bottom:10px">
+			<a class="icon-wrap account-icon df aic jcc ta2" href="#sign-in" style="width:250px" data-fancybox>
+				<svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#user"></use></svg>&nbsp;
+				<h3>Zaloguj się</h3>
+			</a>
+		</div>
+		<div class="popup-bottomRegister" style="display: inline-block; margin-bottom:10px">
+			<a class="icon-wrap account-icon df aic jcc ta2" href="#sign-up" style="width:250px" data-fancybox="" data-close-popup="">
+				<svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#user"></use></svg>&nbsp;
+				<h3>Zarejestruj się</h3>
+			</a>
+		</div>
+	{% endif %}
+{% else %}
+<form id="wholesale">
+	<h2 class="product-title3">Twoje dane</h2>
+	<div class="wholesale-customer-data df jcsb">
+		<div class="column left">
+			<h3>Podstawowe dane</h3>
+			{% if addresses %}
+			<div class="form-block"  data-error="address_id">
+				<select name="address[address_id]" id="input-address" data-nice-select>
+					<option value="" disabled{{ not address.address_id ? ' selected'}}> --- Wybierz adres --- </option>
+					{% for item in addresses %}
+					<option value="{{ item.address_id }}"{{ item.address_id == address.address_id  ? ' selected'}}>{{ item.city }}, {{ item.address_1 }}</option>
+					{% endfor %}
+				</select>
+				<div class="form-error"></div>
+			</div>
+			{% else %}
+			<input type="hidden" name="address[address_id]" value="0">
+			{% endif %}
+			<div class="form-block" data-error="firstname">
+				<input type="text" name="address[firstname]" value="{{ address.firstname }}" placeholder="{{ entry_firstname }}">
+				<div class="form-error"></div>
+			</div>
+			<div class="form-block" data-error="lastname">
+				<input type="text" name="address[lastname]" value="{{address.lastname }}" placeholder="{{entry_lastname }}">
+				<div class="form-error"></div>
+			</div>
+			<div class="form-block" data-error="email">
+				<input type="email" name="address[email]" value="{{address.email}}" placeholder="{{ entry_email_address }}" />
+				<div class="form-error"></div>
+			</div>
+			<div class="form-block" data-error="telephone">
+				<input type="text" name="address[telephone]" value="{{address.telephone}}" placeholder="{{ entry_telephone }}" />
+				<div class="form-error"></div>
+			</div>
+		</div>
+		<div class="column right">
+			<h3>Dane do wysyłki</h3>
+			<div class="form-block" data-error="address_1">
+				<div class="textarea-wrapper">
+					<textarea name="address[address_1]"  class="form-control shipping">{{address.address_1}}</textarea>
+				</div>
+			</div>
+			<h3>Komentarz do zamówienia</h3>
+			<div class="form-block">
+				<div class="textarea-wrapper">
+					<textarea name="address[comment]"  class="form-control comment{{addresses ? ' tall'}}">{{address.comment}}</textarea>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wholesale-products">
+	{% for category in categories %}
+		<h2 class="product-title3">{{category.name}}</h2>
+		<div class="product-list">
+			<table>
+				<thead>
+					<tr>
+						<th>Okładka</th>
+						<th class="name">Nazwa produktu</th>
+						<th>Ilość opakowań zbiorczych</th>
+						<th>Sztuk w opakowaniu</th>
+						<th>Suma</th>
+						<th>Cena</th>
+						<th>Wszystko</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for product in category.products %}
+					<tr class="mobile-item aic" data-mobile-product="{{product.product_id}}">
+						<td class="trigger" data-product-trigger>
+							<svg class="ta"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#trigger"></use></svg>
+						</td>
+						<td class="mobile-image">
+							<img src="{{product.thumb}}" alt="">
+						</td>
+						<td class="mobile-name">{{product.name}}</td>
+						<td class="mobile-mark"> 
+							<div class="buy-mark{{cart_products[product.product_id].packs ? ' active'}} ta posr" data-mark>
+								<svg class="posa"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#check"></use></svg>
+							</div>
+						</td>
+					</tr>
+					<tr class="product-row" data-product="{{product.product_id}}" data-price="{{product.price_abs}}">
+						<input type="hidden" name="product[{{product.product_id}}][product_id]" value="{{product.product_id}}">
+						<input type="hidden" name="product[{{product.product_id}}][price]" value="{{product.price}}">
+						<td class="image">
+							<img src="{{product.thumb}}" alt="">
+						</td>
+						<td class="name">
+							{{product.name}}
+						</td>
+						<td class="packs">
+							<div class="mobile-label">Ilość opakowań zbiorczych</div>
+							<div class="cart-quantity df" data-quantity data-min="{{ product.minimum }}" data-max="0">
+								<a href="javascript:;" class="gnt-btn df jcc aic posr" data-qnt-btn="0">-</a>
+								<input type="number" name="product[{{product.product_id}}][packs]" data-input-quantity class="form-control cnt" readonly
+									value="{{cart_products[product.product_id].packs ? cart_products[product.product_id].packs : 0}}">
+								<a href="javascript:;" class="gnt-btn df jcc aic posr" data-qnt-btn="1">+</a>
+							</div>
+						</td>
+						<td class="pack cnt">
+							<div class="mobile-label">Sztuk w opakowaniu</div>
+							<span data-inpack>{{product.in_pack}}</span>
+						</td>
+						<td class="wh-quantity cnt">
+							<div class="mobile-label">Suma</div>
+							<div class="char-value">
+								<input type="number" readonly class="input-hidden cnt" name="product[{{product.product_id}}][quantity]" data-amount
+									value="{{cart_products[product.product_id].quantity ? cart_products[product.product_id].quantity : 0}}">
+							</div>
+						</td>
+						<td class="price cnt">
+							<div class="mobile-label">Cena</div>
+							<span>{{product.price1}}</span>
+						</td>
+						<td class="product-total cnt">
+							<div class="mobile-label">Wszystko</div>
+							<input type="hidden" name="product[{{product.product_id}}][total]" value="{{cart_products[product.product_id].total}}" data-total>
+							<b><span data-total-text>{{cart_products[product.product_id].total ? cart_products[product.product_id].total : 0}}</span> zł</b>
+						</td>
+						<td class="mark">
+							<div class="buy-mark{{cart_products[product.product_id].packs ? ' active'}} ta posr" data-mark>
+								<svg class="posa"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#check"></use></svg>
+							</div>
+						</td>
+					</tr>	
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	{% endfor %}
+	</div>
+	<div class="wholesale-totals df jce">
+		<table>
+			<tbody>
+				<tr>
+					<td>Cena</td>
+					<td data-totals-subtotal>{{totals.subtotal}}</td>
+				</tr>
+				<tr>
+					<td>Rabat</td>
+					<td data-totals-discount>{{totals.discount}}</td>
+				</tr>
+				<tr>
+					<td>Wszystko</td>
+					<td data-totals-total>{{totals.total}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="confirm df jce">
+		<button type="button" class="btn df aic jcc" onclick="confirm()">
+			Zamawiam
+			<svg width="24" height="27"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#cart"></use></svg>
+		</button>
+	</div>
+</form>
+<script>
+var success = 'Dziękujemy za złożenie zamówienia w sklepie. W mailu otrzymasz informacje odnośnie zamówienia';
+	function wholesaleUpdate(p, v) {
+		console.log(p);
+		console.log(v);
+		var s = parseInt(p.find('[data-inpack]').text()) * v,
+			t = (Math.round(s * p.data('price')*100) / 100).toFixed(2).replace('.', ','),
+			pm = $('#wholesale').find('[data-mobile-product="'+p.data('product')+'"]');
+		p.find('[data-amount]').val(s);
+		p.find('[data-total]').val(t);
+		p.find('[data-total-text]').text(t);
+		if(v) {
+			p.find('[data-mark]').addClass('active');
+			pm.find('[data-mark]').addClass('active');
+		} else {
+			p.find('[data-mark]').removeClass('active');
+			pm.find('[data-mark]').removeClass('active');
+		}
+		$('body').append(loader);
+		$.ajax({
+			url: 'index.php?route=extension/module/nr_wholesale/calculate',
+			type: 'post',
+			dataType: 'json',
+			data: $('#wholesale').serialize(),
+			success: function(json) {
+				$('#loader').remove();
+				$('[data-totals-subtotal]').html(json.subtotal);
+				$('[data-totals-discount]').html(json.discount);
+				$('[data-totals-total]').html(json.total);
+			},
+			error: function(data) {
+				$('#loader').remove();
+				console.log(data.responseText);
+			}
+		});
+	}
+	function confirm() {
+		$('[data-error]').removeClass('input-error').find('.form-error').text('').hide();
+		$('body').append(loader);
+		$.ajax({
+			url: 'index.php?route=extension/module/nr_wholesale/order',
+			type: 'post',
+			dataType: 'json',
+			data: $('#wholesale').serialize(),
+			success: function(json) {
+				$('#loader').remove();
+				if(json.error) {
+					$.each(json.error, function(i, v){
+						$('[data-error="'+i+'"]').addClass('input-error').find('.form-error').text(v).show();
+					});
+				} else if(json.order_id) {
+					nrShowMessage(success, 1);
+				}
+			},
+			error: function(data) {
+				$('#loader').remove();
+				console.log(data.responseText);
+			}
+		});
+	}
+	$('#input-address').on('change', function() {
+		$('body').append(loader);
+		$.ajax({
+			url: 'index.php?route=extension/module/nr_wholesale/change_address',
+			type: 'post',
+			data: $('#wholesale').serialize(),
+			success: function(data) {window.location.reload();},
+			error: function(data) {
+				$('#loader').remove();
+				console.log(data.responseText);
+			}
+		});
+	});
+</script>
+{% endif %}

@@ -1,0 +1,21 @@
+<div class="slider nr-products owl-carousel" data-slider>
+	{% for product in products %}
+		<div class="products-slide ta">
+			<div class="inner  df aic posr color{{product.color}}">
+				<a href="{{product.href}}" class="image">
+					<img src="{{product.image}}" alt="">
+				</a>
+				<div class="text posr">
+					<a href="{{product.href}}" class="name">{{product.name}}</a>
+					<div class="desc">{{product.description}}</div>
+				</div>
+				<div class="bottom posa df jcsb">
+					<div class="price">{{product.price}}</div>
+					<button type="button" class="btn-hidden to" onclick="cart.add({{product.product_id}}, 1);">
+						<svg width="24" height="27"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#btn_cart"></use></svg>
+					</button>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>

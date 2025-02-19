@@ -1,0 +1,68 @@
+{{ header }}
+<div id="product-category" class="page-wrapper container">
+	<h1 class="page-title cnt">{{ heading_title }}</h1>
+	{% if short_description %}
+	<div class="cat-short-description cnt">{{ short_description }}</div>
+	{% endif %}
+	<div class="breadcrumbs df fww">
+    {% for breadcrumb in breadcrumbs %}
+		{% if loop.last %}
+		<span>{{ breadcrumb.text }}</span>
+		{% else %}
+		<a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+		<i>/</i>
+		{% endif %}
+    {% endfor %}
+	</div>
+	<div class="category-wrapper df">
+		<div class="category-left-column">
+			<div class="category-left sorting">
+				<div class="column-title">{{ text_sort }}</div>
+				<select id="input-sort" onchange="location = this.value;" class="small" data-nice-select>
+				{% for sorts in sorts %}
+					<option value="{{ sorts.href }}"{{sorts.value == '%s-%s'|format(sort, order) ? ' selected'}}>{{ sorts.text }}</option>
+				{% endfor %}
+				</select>
+			</div>
+			<div class="category-left menu-left">
+				<div class="column-title">kategorie</div>
+				{{ column_left }}
+			</div>
+		</div>
+		<div class="category-main">
+		{% if products %}
+			<div class="category-products-row df fww">
+				{% for product in products %}
+				<div class="product-item">
+					<div class="inner posr {{product.mpn}}">
+						<a class="category-product-image posr" href="{{ product.href }}">
+							<img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}"/>
+						</a>
+						<a href="{{ product.href }}" class="product-item-title df aie posr">{{ product.name }}</a>
+						<div class="product-item-bottom posr df jcsb ais">
+							<div class="product-item-price">{{ product.special ? product.special : product.price}}</div>
+							<button type="button" class="btn-hidden to" onclick="cart.add('{{ product.product_id }}', '{{ product.minimum }}');">
+								<svg width="24" height="27"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#btn_cart"></use></svg>
+							</button>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+			{{ pagination }}
+		{% else %}
+			<p>{{ text_empty }}</p>
+		{% endif %}
+		{% if description %}
+			<div class="description-title">{{ heading_title }}</div>
+			<div class="category-description">{{ description }}</div>
+		{% endif %}
+		</div>
+	</div>
+	{{ content_top }}
+	{{ content_bottom }}
+	{{ column_right }}
+</div>
+{{ footer }}
+</body>
+</html>

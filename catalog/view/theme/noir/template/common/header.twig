@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<!--[if IE 8 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie8"><![endif]-->
+<!--[if IE 9 ]><html dir="{{ direction }}" lang="{{ lang }}" class="ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html dir="{{ direction }}" lang="{{ lang }}">
+<!--<![endif]-->
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="shortcut icon" sizes="any" href="/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="/catalog/view/theme/noir/img/favicon/apple-touch-icon.png">
+	<link rel="icon" type="image/svg+xml" href="/catalog/view/theme/noir/img/favicon/safari-pinned-tab.svg">
+	<link rel="icon" type="image/png" sizes="512x512"  href="/catalog/view/theme/noir/img/favicon/android-icon-512x512.png">
+	<link rel="icon" type="image/png" sizes="192x192"  href="/catalog/view/theme/noir/img/favicon/android-icon-192x192.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/templates/noir/favicon/favicon-96x96.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/catalog/view/theme/noir/img/favicon/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/templates/noir/favicon/favicon-16x16.png">
+	<meta name="msapplication-TileImage" content="/catalog/view/theme/noir/img/favicon/mstile-144x144.png">
+	<meta name="msapplication-square70x70logo" content="/catalog/view/theme/noir/img/favicon/mstile-70x70.png">
+	<meta name="msapplication-square150x150logo" content="/catalog/view/theme/noir/img/favicon/mstile-150x150.png">
+	<meta name="msapplication-wide310x150logo" content="/catalog/view/theme/noir/img/favicon/mstile-310x310.png">
+	<meta name="msapplication-square310x310logo" content="/catalog/view/theme/noir/img/favicon/mstile-310x150.png">
+	<link rel="manifest" href="/catalog/view/theme/noir/img/favicon/manifest.webmanifest">
+	<meta name="msapplication-config" content="/catalog/view/theme/noir/img/favicon/browserconfig.xml" />
+	<title>{{ title }}</title>
+	{% if robots %}
+	<meta name="robots" content="{{ robots }}" />
+	{% endif %}
+	<base href="{{ base }}" />
+	{% if description %}
+	<meta name="description" content="{{ description }}" />
+	{% endif %}
+	{% if keywords %}
+	<meta name="keywords" content="{{ keywords }}" />
+	{% endif %}
+	<meta property="og:title" content="{{ title }}" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="{{ og_url }}" />
+	{% if og_image %}
+	<meta property="og:image" content="{{ og_image }}" />
+	{% else %}
+	<meta property="og:image" content="{{ logo }}" />
+	{% endif %}
+	<meta property="og:site_name" content="{{ name }}" />
+	<link href="catalog/view/theme/noir/css/fancybox.css" rel="stylesheet">
+	<link href="catalog/view/theme/noir/css/stylesheet.css" rel="stylesheet">
+	<script src="catalog/view/theme/noir/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="https://use.typekit.net/kam8ojj.css">
+	{% for style in styles %}
+	<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
+	{% endfor %}
+	{% for script in scripts %}
+	<script src="{{ script }}" type="text/javascript"></script>
+	{% endfor %}
+
+	{% for link in links %}
+	<link href="{{ link.href }}" rel="{{ link.rel }}" />
+	{% endfor %}
+	{% for analytic in analytics %}
+	{{ analytic }}
+	{% endfor %}
+</head>
+<body class="{{ home == og_url ? 'home' : 'page'}}">
+	{{ cart_pannel }}
+	<div id="menu">
+		<div class="menu-close" data-menu-close><svg width="16" height="16"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#cross1"></use></svg></div>
+		<div class="menu-inner">
+			<div class="right posa df jcsb fdc">
+				<nav class="menu-wrapper">
+					<ul>
+						{{ menu }}
+						{% if group == 2 %}
+						<li{{wholesale.active ? ' class="active"'}}><a class="ta" href="{{ wholesale.href }}">{{ wholesale.title }}</a></li>
+						{% endif %}
+					</ul>
+				</nav>
+				{% if informations %}
+				<nav class="infomenu">
+					<ul class="df jcsb aie fww">
+						{% for information in informations %}
+						<li{{information.active ? ' class="active"' : ''}}><a class="ta" href="{{ information.href }}">{{ information.title }}</a></li>
+						{% endfor %}
+						<li{{route == 'information/contact' ? ' class="active"'}}><a class="ta" href="{{ contact }}">Kontakty</a>
+					</ul>
+				</nav>
+				{% endif %}
+			</div>
+		</div>
+		<div class="berry posa ta2"></div>
+		<div class="bottom posa">
+			<div class="line df aic">
+				<svg width="15" height="16"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#marker"></use></svg>{{address}}
+			</div>
+			<div class="line df aic">
+				<svg width="15" height="12"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#mail"></use></svg>{{email}}
+			</div>
+			<div class="line df aic">
+				<svg width="15" height="12"><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#phone"></use></svg>{{telephone}}
+			</div>
+		</div>
+		<div class="v-label posa"><span>Get in touch</span></div>
+		<div class="menu-social df fdc posa">
+			<a class="social" href="{{facebook}}" target="_blank" rel="noopener nofollow noreferrer">
+				<svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#fb"></use></svg>
+			</a>
+			<a class="social" href="{{instagram}}" target="_blank" rel="noopener nofollow noreferrer">
+				<svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#inst"></use></svg>
+			</a>
+		</div>
+	</div>
+	<div class="site-wrapper posr">
+		<header class="df jcsb aic">
+			<div class="menu-icon ta"  data-menu-toggle>
+				<div class="inner df posr aic">
+					<div class="icon-wrap hamburger-box posr ta2">
+						<span class="hamburger-inner"></span>
+					</div>
+					<span class="to">Menu</span>
+				</div>
+			</div>
+			{% if home == og_url %}
+			<div class="logo ta posa df jcc ais"><img class="ta" src="/catalog/view/theme/noir/img/logo.png" alt=""></div>
+			{% else %}
+			<a href="{{ home }}" class="logo ta ta posa df jcc ais"><img class="ta" src="/catalog/view/theme/noir/img/logo.png" alt=""></a>
+			{% endif %}
+			<div class="header-right df aic">
+				{% if logged %}
+				<a class="icon-wrap account-icon df aic jcc ta2" href="{{account}}" data-account>
+				{% else %}
+				<a class="icon-wrap account-icon df aic jcc ta2" href="#sign-in" data-fancybox>
+				{% endif %}
+					<svg><use xlink:href="/catalog/view/theme/noir/img/sprite.svg#user"></use></svg>
+				</a>
+				{{ cart }}
+			</div>
+		</header>
