@@ -283,16 +283,19 @@ header img {
   display: none;
 }
 .cart-button{
+  width: 30px;
   position: relative;
 }
-
-#cart-count{
+#cart-count-wrap{
+  background-color: #000;
   position: absolute;
-  right: 1px;
-  bottom: 1px;
+  bottom: 0;
+  right: 0;
   color: #fff;
   z-index: 10;
+  border-radius: 50%;
 }
+
 @media screen and (max-width: 768px) {
   #cart-count{
     position: absolute;

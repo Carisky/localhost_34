@@ -79,6 +79,7 @@
 .about-owner .popularity {
   display: flex;
   width: 70%;
+  margin: auto;
 }
 
 .about-owner .popularity .left .line-1 {
