@@ -15,6 +15,7 @@
         </div>
     {% endif %}
 
+
     <div id="categories-menu" class="modal-menu">
         <div class="top">
             <div class="title">Kategorie produktów</div>
@@ -28,20 +29,24 @@
     </div>
 
     <div id="parameters-menu" class="modal-menu">
-        <div class="top">
-            <div class="title">Sortowanie</div>
-            <span class="close-btn" id="parameters-menu-close">&times;</span>
-        </div>
-        <div class="checkbox-container">
-            {% for sort_option in sorts %}
-                <label>
-                    <input type="radio" name="sort" class="parameters-radio" value="{{ sort_option.value }}" 
-                    {% if sort_option.value == sort %}checked{% endif %}> 
-                    {{ sort_option.text }}
-                </label>
-            {% endfor %}
-        </div>
+  <div class="top">
+    <div class="title">Sortowanie</div>
+    <span class="close-btn" id="parameters-menu-close">&times;</span>
+  </div>
+  <!-- Форма для сортировки -->
+  <form id="sortForm" method="get" action="{{ url_current }}">
+    <div class="checkbox-container">
+      {% for sort_option in sorts %}
+        <label>
+          <input type="radio" name="sort" class="parameters-radio" value="{{ sort_option.value }}"
+          {% if sort_option.value == sort %}checked{% endif %}>
+          {{ sort_option.text }}
+        </label>
+      {% endfor %}
     </div>
+  </form>
+</div>
+
 
     <div class="title">Sklep</div>
 

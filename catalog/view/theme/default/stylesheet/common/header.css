@@ -185,25 +185,27 @@ header img {
   cursor: pointer;
 }
 .modal-cart {
-  display: none;
-  padding: 30px;
-  flex-direction: column;
   position: fixed;
   top: 0;
-  right: -100%; /* Начальная позиция, скрыто за экраном */
+  right: -100%; /* скрыто за экраном */
   width: 85vw;
   height: 85vh;
+  min-height: 85vh;
   background-color: #fcf8f2;
   color: #a68264;
-  transition: right 0.3s ease-in-out;
   z-index: 9999;
-  padding-top: 20px;
+  box-sizing: border-box; /* учитываем padding в размере элемента */
+  padding: 30px; /* задаём единообразные отступы */
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+  transition: right 0.3s ease-in-out;
+  
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-cart.active {
   right: 0;
-  display: flex;
+  /* display: flex; - можно убрать, т.к. flex уже задан в базовом правиле */
 }
 
 .modal-cart .close-btn {

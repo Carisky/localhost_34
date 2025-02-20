@@ -8,6 +8,7 @@ class ControllerProductCategory extends Controller {
 		$this->load->model('catalog/product');
 
 		$this->load->model('tool/image');
+		
 
 		if (isset($this->request->get['filter'])) {
 			$filter = $this->request->get['filter'];
@@ -346,6 +347,12 @@ class ControllerProductCategory extends Controller {
 
 			if ($limit && ceil($product_total / $limit) > $page) {
 			    $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id'] . '&page='. ($page + 1)), 'next');
+			}
+
+
+			$data['categories'] = $this->model_catalog_category->getCategories(0);
+			foreach ($data['categories'] as &$category) {
+				$category['href'] = $this->url->link('product/category', 'path=' . $category['category_id']);
 			}
 
 			$data['sort'] = $sort;

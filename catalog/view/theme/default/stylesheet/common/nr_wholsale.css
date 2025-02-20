@@ -211,6 +211,17 @@ form#wholesale {
   max-width: 100%;
   height: auto;
 }
+/* Для Firefox: убираем спин-кнопки */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Для Webkit-браузеров: убираем спин-кнопки */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
 /* Управление количеством товара */
 .cart-quantity {

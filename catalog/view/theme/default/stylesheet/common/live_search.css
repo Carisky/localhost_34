@@ -13,6 +13,12 @@
 	top:80%;
 	display: none;
 }
+
+#search-input:focus {
+	outline: none !important;
+	box-shadow: none !important;
+  }
+  
 .live-search .loading{
 	display:block;
 	margin-left:auto;

@@ -2,6 +2,26 @@ const productsContainer = document.getElementById("products-list");
 const paginationContainer = document.getElementById("pagination");
 const apiUrl = 'index.php?route=product/all/index';
 
+const categoriesMenu = document.getElementById("categories-menu");
+const categoriesMenuIcon = document.getElementById("categories-sort");
+const categoriesMenuClose = document.getElementById("categories-menu-close");
+const parametersMenu = document.getElementById("parameters-menu");
+const parametersMenuIcon = document.getElementById("parameters-sort");
+const parametersMenuClose = document.getElementById("parameters-menu-close");
+
+const toggleMenuVisibility = (menu) => {
+  menu.classList.toggle("active");
+};
+
+parametersMenuIcon.addEventListener("click", () => toggleMenuVisibility(parametersMenu));
+parametersMenuClose.addEventListener("click", () => toggleMenuVisibility(parametersMenu));
+
+
+
+categoriesMenuIcon.addEventListener("click", () => toggleMenuVisibility(categoriesMenu));
+categoriesMenuClose.addEventListener("click", () => toggleMenuVisibility(categoriesMenu));
+
+
 const productsPerPage = 16;
 let allProducts = [];
 let currentPage = 1;
@@ -92,3 +112,8 @@ function renderPagination() {
 
 
 document.addEventListener("DOMContentLoaded", fetchAndRenderProducts);
+document.querySelectorAll('.parameters-radio').forEach(radio => {
+  radio.addEventListener('change', () => {
+      document.getElementById('sortForm').submit();
+  });
+});
