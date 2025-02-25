@@ -9,11 +9,7 @@
 <div class="single-product">
 
 	<div class="left">
-		<img class="product-image" src="{{ image_url }}" alt="{{ name }}" onerror="this.onerror=null; this.src='image/no_image.png';"/>
-	</div>
-	<div class="right">
-
-		{% if breadcrumbs %}
+	{% if breadcrumbs %}
 			<div class="breadcrumbs">
 				{% for breadcrumb in breadcrumbs %}
 					<div>
@@ -27,6 +23,11 @@
 				{% endfor %}
 			</div>
 		{% endif %}
+		<img class="product-image" src="{{ image_url }}" alt="{{ name }}" onerror="this.onerror=null; this.src='image/no_image.png';"/>
+	</div>
+	<div class="right">
+
+		
 
 		<div class="product-name">
 			{{name}}

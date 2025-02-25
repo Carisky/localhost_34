@@ -22,7 +22,9 @@ function createProductCard(product) {
 
                 <div class="name-price-block">
                     <div class="product-name" title="${product.name}">
+                    <a class="product-link" href="/index.php?route=common/singleproduct&id=${product.product_id}/">
                         ${product.name}
+                        </a>
                     </div>
                     <div class="product-price">
                         ${product.price}

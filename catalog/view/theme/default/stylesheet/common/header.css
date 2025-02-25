@@ -221,13 +221,16 @@ header img {
 }
 
 .modal-cart .list {
+  overflow-y: scroll;
   flex-grow: 1;
 }
 
 .modal-cart .bottom {
   display: flex;
 }
-
+#cart-button{
+  cursor: pointer;
+}
 .modal-cart .bottom .left {
   display: flex;
   align-items: center;
@@ -287,6 +290,12 @@ header img {
   position: relative;
 }
 #cart-count-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 18px;
+  width: 18px;
   background-color: #000;
   position: absolute;
   bottom: 0;
@@ -297,13 +306,6 @@ header img {
 }
 
 @media screen and (max-width: 768px) {
-  #cart-count{
-    position: absolute;
-    right: 6px;
-    bottom: 1px;
-    color: #fff;
-    z-index: 10;
-  }
   .right-group div{
     margin: 0;
   }
@@ -355,6 +357,8 @@ header img {
   }
 
   .modal-menu {
+    height: 70vh;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
   }
@@ -363,4 +367,15 @@ header img {
     width: 50%;
     padding-left: 10px;
   }
+  .modal-cart.active {
+    right: auto;
+    width: 100vw;
+    /* display: flex; - можно убрать, т.к. flex уже задан в базовом правиле */
+  }
+}
+
+
+.product-link{
+  text-decoration: none;
+  color: #6b4424;
 }

@@ -2,7 +2,7 @@ const menuIcon = document.getElementById("menu-icon");
 const modalMenu = document.getElementById("modalMenu");
 const closeMenu = document.getElementById("closeMenu");
 
-const cartIcon = document.getElementById("cart-icon");
+const cartIconBtn = document.getElementById("cart-button");
 const modalCart = document.getElementById("modalCart");
 const closeCart = document.getElementById("closeCart");
 
@@ -101,10 +101,11 @@ const changeCartVis = () => {
   modalCart.classList.toggle("active");
 };
 
-cartIcon.addEventListener("click", async () => {
+cartIconBtn.addEventListener("click", async () => {
   changeCartVis();
   await fetchCartItems();
 });
+
 
 closeCart.addEventListener("click", changeCartVis);
 

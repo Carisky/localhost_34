@@ -9,6 +9,7 @@
 }
 
 .breadcrumbs .link{
+    white-space: nowrap;  
     text-decoration: none;
     font-family: Montserrat;
     font-size: 14px;
@@ -30,3 +31,11 @@
     text-decoration-skip-ink: none;
     color: #987253;
 }
+@media screen and (max-width: 768px) {
+    .breadcrumbs .last {
+      white-space: nowrap;       /* Запрещает перенос строк */
+      overflow: hidden;          /* Скрывает переполнение */
+      text-overflow: ellipsis;   /* Добавляет троеточие при переполнении */
+    }
+  }
+  

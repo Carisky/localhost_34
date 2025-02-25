@@ -595,3 +595,5 @@
 2025-02-19 20:36:41 - PHP Notice:  Error: Could not load template default/template/information/information! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37
 2025-02-19 20:36:58 - PHP Notice:  Error: Could not load template default/template/information/information! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37
 2025-02-19 20:37:22 - PHP Notice:  Error: Could not load template default/template/information/information! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37
+2025-02-22 21:48:24 - PHP Notice:  Error: Could not load template default/template/checkout/buy! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37
+2025-02-22 22:03:35 - PHP Warning:  Undefined array key 1 in C:\OSPanel\domains\localhost\catalog\controller\checkout\buy.php on line 1439

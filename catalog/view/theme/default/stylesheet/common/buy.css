@@ -1,0 +1,299 @@
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Основной стиль страницы без отступов у body */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    /* Нет padding, чтобы футер не сжимался */
+  }
+  
+  /* Контейнер страницы */
+  .page-wrapper.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px; /* Можно добавить внутренние отступы для контента */
+  }
+  
+  /* Заголовок страницы и краткое описание */
+  .page-title.cnt {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .cat-short-description.cnt {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #555;
+  }
+  
+  /* Форма оформления */
+  #checkout {
+    margin-bottom: 20px;
+  }
+  
+  /* Стили для корзины */
+  .checkout-cart {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .product-title2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  .checkout-cart-list {
+    /* Стили для списка товаров */
+  }
+  
+  /* Стили для списка товаров в корзине */
+  .cart-products {
+    list-style: none;
+  }
+  
+  .cart-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .cart-item:last-child {
+    border-bottom: none;
+  }
+  
+  .product-image img {
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+  
+  /* Основная область оформления заказа */
+  .checkout-main {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  /* Левая и правая колонки */
+  .column {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+  }
+  
+  /* Секции: профиль, доставка, оплата, итоги */
+  .checkout-profile,
+  .checkout-shipping,
+  .checkout-payment,
+  .checkout-totals {
+    margin-bottom: 20px;
+  }
+  
+  /* Блок с формами (например, чекбоксы) */
+  .form-block {
+    margin-bottom: 20px;
+  }
+  
+  .form-block .checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .form-error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  /* Кнопка подтверждения заказа */
+  .confirm {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .confirm .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  .confirm .btn:hover {
+    background: #555;
+  }
+  
+  /* Поля ввода внутри checkout, чтобы они занимали всю ширину */
+  .checkout-profile input,
+  .checkout-profile select,
+  .checkout-profile textarea,
+  #checkout input,
+  #checkout select,
+  #checkout textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fcf8f2;
+    color: #6b4424;
+    margin-bottom: 15px;
+  }
+  
+  /* Цвет плейсхолдера */
+  .checkout-profile input::placeholder,
+  .checkout-profile select::placeholder,
+  .checkout-profile textarea::placeholder,
+  #checkout input::placeholder,
+  #checkout select::placeholder,
+  #checkout textarea::placeholder {
+    color: #c7a992;
+  }
+  
+  /* Для радио и чекбоксов используем дефолтную ширину */
+  .checkout-profile input[type="radio"],
+  #checkout input[type="radio"],
+  .checkout-profile input[type="checkbox"],
+  #checkout input[type="checkbox"] {
+    width: auto;
+  }
+  
+  /* Альтернативная кнопка (если требуется иной стиль) */
+  .btn {
+    width: 100%;
+    background-color: #fcf8f2;
+    cursor: pointer;
+    border: 1px solid #6b4424;
+    color: #6b4424;
+    height: 40px;
+  }
+  .product-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .product-name{
+    display: flex;
+    align-items: center;
+  }
+
+  /* Стили для таблицы корзины */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden; /* для корректного скругления углов */
+  }
+  
+  .cart-table th,
+  .cart-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    vertical-align: middle;
+    text-align: left;
+  }
+  
+  .cart-table th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-size: 1rem;
+  }
+  
+  .cart-table td {
+    font-size: 0.9rem;
+    color: #333;
+  }
+  
+  .cart-table tr:nth-child(even) {
+    background-color: #fcf8f2;
+  }
+  
+  .cart-table tr:hover {
+    background-color: #f9f9f9;
+  }
+  
+  .cart-table img {
+    border-radius: 3px;
+    margin-right: 10px;
+  }
+  
+  /* Адаптивность: колонки в одну */
+  @media (max-width: 768px) {
+    .checkout-main {
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 768px) {
+    /* Скрываем заголовок таблицы */
+    .cart-table thead {
+      display: none;
+    }
+    /* Делаем таблицу и её элементы блочными */
+    .cart-table,
+    .cart-table tbody,
+    .cart-table tr,
+    .cart-table td {
+      display: block;
+      width: 100%;
+    }
+    /* Отступ между строками */
+    .cart-table tr {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      padding: 10px;
+    }
+    /* Настройка ячеек */
+    .cart-table td {
+      position: relative;
+      padding-left: 50%;
+      text-align: left;
+      border: none;
+      border-bottom: 1px solid #eee;
+    }
+    /* Убираем нижнюю границу у последней ячейки */
+    .cart-table td:last-child {
+      border-bottom: none;
+    }
+    /* Псевдоэлементы для подписи столбца */
+    .cart-table td:before {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 40%;
+      padding-right: 10px;
+      white-space: nowrap;
+      font-weight: bold;
+    }
+    /* Указываем подписи через nth-of-type */
+    .cart-table td:nth-of-type(1):before { content: "Zdjęcie"; }
+    .cart-table td:nth-of-type(2):before { content: "Nazwa"; }
+    .cart-table td:nth-of-type(3):before { content: "Ilość"; }
+    .cart-table td:nth-of-type(4):before { content: "Cena"; }
+    .cart-table td:nth-of-type(5):before { content: "Łączna cena"; }
+  }
+  
