@@ -22,7 +22,7 @@
 								<tr>
 									<td>
 										{% if product.image %}
-											<img src="{{ product.image }}" alt="{{ product.name }}" width="50" height="50">
+											<img src="/image/{{ product.image }}" alt="{{ product.name }}" width="50" height="50">
 										{% endif %}
 									</td>
 									<td>{{ product.name }}</td>
@@ -56,7 +56,7 @@
 						<label class="checkbox large-box df small-text">
 							<input type="checkbox" name="agree" value="1" {{ agree ? ' checked' }}>
 							<b></b>
-							<div>Zapoznałem się i akceptuję Regulamin Sklepu Internetowego, Politykę Prywatności w celu realizacji zamówienia. *</div>
+							<div>Zapoznałem się i akceptuję <a href="/regulamin-sklepu">Regulamin Sklepu</a> Internetowego, <a href="/polityka">Politykę Prywatności</a> w celu realizacji zamówienia. *</div>
 						</label>
 						<div class="form-error"></div>
 					</div>

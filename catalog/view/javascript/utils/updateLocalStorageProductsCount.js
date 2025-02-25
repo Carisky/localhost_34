@@ -1,7 +1,7 @@
-// Function to update localStorage and dispatch a custom event
+// Обновление localStorage и отображения счётчика
 function updateLocalStorageProductsCount(value) {
-  if(value){
-    localStorage.setItem("productsCount", value);
-    document.getElementById("cart-count").textContent = `${value}`;
+  if (!isNaN(value)) {
+    sessionStorage.setItem("productsCount", value);
+    document.getElementById("cart-count").textContent = value;
   }
 }

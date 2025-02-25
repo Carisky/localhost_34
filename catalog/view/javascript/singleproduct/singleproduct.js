@@ -34,7 +34,8 @@ async function loadProducts() {
 // Функция для добавления товара в корзину
 function addToCart() {
     const productId = addToCartBtn.getAttribute("data-product-id");
-    updateLocalStorageProductsCount(parseInt(localStorage.getItem("productsCount"))+1);
+    let currentCount = parseInt(sessionStorage.getItem("productsCount")) || 0;
+    updateLocalStorageProductsCount(currentCount + 1);
     fetch('index.php?route=checkout/cart/add', {
         method: 'POST',
         headers: {

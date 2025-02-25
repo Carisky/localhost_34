@@ -1,5 +1,6 @@
 // Функция для создания карточки товара
 function createProductCartCard(product) {
+
   return `
       <div class="product-cart-card">
         <div class="product-thumb">
@@ -21,20 +22,14 @@ function createProductCartCard(product) {
     `;
 }
 
-// Функция для добавления товара в корзину
+// Функция для добавления товара (увеличение счётчика)
 async function add(productId) {
-  updateLocalStorageProductsCount(
-    parseInt(localStorage.getItem("productsCount")) + 1
-  );
+  let currentCount = parseInt(sessionStorage.getItem("productsCount")) || 0;
+  updateLocalStorageProductsCount(currentCount + 1);
   fetch("index.php?route=checkout/cart/add", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      product_id: productId,
-      quantity: 1,
-    }),
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ product_id: productId, quantity: 1 }),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -50,20 +45,14 @@ async function add(productId) {
     });
 }
 
-// Функция для добавления товара в корзину
+// Функция для уменьшения количества товара
 async function decrease(productId) {
-  updateLocalStorageProductsCount(
-    parseInt(localStorage.getItem("productsCount")) - 1
-  );
+  let currentCount = parseInt(sessionStorage.getItem("productsCount")) || 0;
+  updateLocalStorageProductsCount(currentCount - 1);
   fetch("index.php?route=checkout/cart/add", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      product_id: productId,
-      quantity: -1,
-    }),
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ product_id: productId, quantity: -1 }),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -75,24 +64,18 @@ async function decrease(productId) {
       }
     })
     .catch((error) => {
-      console.error("Error adding product to cart:", error);
+      console.error("Error decreasing product quantity:", error);
     });
 }
 
-// Функция для добавления товара в корзину
+// Функция для удаления товара (уменьшение счётчика на count)
 async function remove(productId, count) {
-  updateLocalStorageProductsCount(
-    parseInt(localStorage.getItem("productsCount")) - count
-  );
+  let currentCount = parseInt(sessionStorage.getItem("productsCount")) || 0;
+  updateLocalStorageProductsCount(currentCount - count);
   fetch("index.php?route=checkout/cart/add", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({
-      product_id: productId,
-      quantity: -count,
-    }),
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ product_id: productId, quantity: -count }),
   })
     .then((response) => response.json())
     .then((data) => {
@@ -104,6 +87,6 @@ async function remove(productId, count) {
       }
     })
     .catch((error) => {
-      console.error("Error adding product to cart:", error);
+      console.error("Error removing product from cart:", error);
     });
 }

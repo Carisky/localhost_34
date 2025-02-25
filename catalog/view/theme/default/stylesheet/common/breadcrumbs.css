@@ -4,7 +4,7 @@
 
 .breadcrumbs div{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 }
 
@@ -30,6 +30,12 @@
     text-underline-position: from-font;
     text-decoration-skip-ink: none;
     color: #987253;
+    min-width: 0;
+
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 @media screen and (max-width: 768px) {
     .breadcrumbs .last {

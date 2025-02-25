@@ -336,6 +336,9 @@ input[type=number]::-webkit-outer-spin-button {
 .confirm .btn:hover {
   background: #f8f0e8;
 }
+#information-information{
+  min-height: 30vh;
+}
 
 .confirm .btn svg {
   fill: #a68264;

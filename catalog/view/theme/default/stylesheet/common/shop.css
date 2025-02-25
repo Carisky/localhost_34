@@ -1,7 +1,6 @@
 .shop{
     width: 90%;
-    padding-left: 5%;
-    padding-right: 5%;
+    margin: auto;
 }
 .shop .title{
     font-family: Playfair Display;
@@ -155,12 +154,14 @@ footer{
     display: flex;
     flex-direction: column;
 }
-
+#products-list .product-card{
+    margin-left: auto;
+    margin-right: auto;
+}
 @media screen and (max-width: 768px) {
     #products-list .product-card{
-        margin-bottom: 30px;
-        height: auto;
-        width: auto;
+        margin-left: auto;
+        margin-right: auto;
     }
     #products-list{
         grid-template-columns: repeat(2, 1fr);

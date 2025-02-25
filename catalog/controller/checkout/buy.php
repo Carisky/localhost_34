@@ -1170,7 +1170,7 @@ class ControllerCheckoutBuy extends Controller {
 
 					'reward'     => $product['reward'],
 
-					'image' 	 => $product['image'],
+					'image' 	  => $this->model_tool_image->resize($product['image'], $this->config->get('theme_default_image_cart_width'), $this->config->get('theme_default_image_cart_height')),
 
 					'sku'		 =>	$product_info['sku'],
 

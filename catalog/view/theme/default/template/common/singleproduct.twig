@@ -14,7 +14,9 @@
 				{% for breadcrumb in breadcrumbs %}
 					<div>
 						{% if loop.last %}
+						<div class="last">
 							<span class="last">{{ breadcrumb.text }}</span>
+							</div>
 						{% else %}
 							<a class="link" href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
 							<span>/</span>
