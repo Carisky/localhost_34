@@ -128,6 +128,50 @@ class ControllerCommonColumnLeft extends Controller {
 				);
 			}
 
+			// BLOG
+			$blog = array();
+			if ($this->user->hasPermission('access', 'blog/article')) {
+				$blog[] = array(
+					'name'	   => $this->language->get('text_blog_article'),
+					'href'     => $this->url->link('blog/article', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'blog/category')) {
+				$blog[] = array(
+					'name'	   => $this->language->get('text_blog_category'),
+					'href'     => $this->url->link('blog/category', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'blog/review')) {
+				$blog[] = array(
+					'name'	   => $this->language->get('text_blog_review'),
+					'href'     => $this->url->link('blog/review', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+			}
+
+			if ($this->user->hasPermission('access', 'blog/setting')) {
+				$blog[] = array(
+					'name'	   => $this->language->get('text_blog_setting'),
+					'href'     => $this->url->link('blog/setting', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()
+				);
+			}
+
+			if ($blog) {
+				$data['menus'][] = array(
+					'id'       => 'menu-blog',
+					'icon'	   => 'fa-book',
+					'name'	   => $this->language->get('text_blog'),
+					'href'     => '',
+					'children' => $blog
+				);
+			}
+
 			// Extension
 			$marketplace = array();
 

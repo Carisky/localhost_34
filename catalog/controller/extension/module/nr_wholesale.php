@@ -183,7 +183,7 @@ class ControllerExtensionModuleNrWholesale extends Controller {
         $this->load->model('checkout/order');
         $this->load->model('catalog/product');
         
-        $custom_fields = $this->customer->getCustomFields();
+        $custom_fields = [];
         
         $country_info = $this->model_localisation_country->getCountry($this->config->get('config_country_id'));
                 
@@ -204,13 +204,13 @@ class ControllerExtensionModuleNrWholesale extends Controller {
         $order_data['telephone'] = $address['telephone'];
         $order_data['comment'] = $address['comment'];
         $order_data['custom_field'] = [
-            5 => $custom_fields[5],
-            2 => $custom_fields[2]
+            5 => isset($custom_fields[5]) ? $custom_fields[5] : '',
+            2 => isset($custom_fields[2]) ? $custom_fields[2] : ''
         ];
         
+        $order_data['payment_company'] = isset($custom_fields[1]) ? $custom_fields[1] : '';
         $order_data['payment_firstname'] = $order_data['firstname'];
         $order_data['payment_lastname'] = $order_data['lastname'];
-        $order_data['payment_company'] = $custom_fields[1];
         $order_data['payment_address_1'] = $address['address_1'];
         $order_data['payment_address_2'] = '';
         $order_data['payment_city'] = '';

@@ -49,7 +49,7 @@
 		 <script src="{{ jquery }}" type="text/javascript"></script>
 
 		 <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
-		 
+
 		{% for style in styles %}
 			<link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}"/>
 		{% endfor %}
@@ -79,15 +79,17 @@
 				<img id="menu-icon" src="image/catalog/assets/menu_icon.svg">
 			</div>
 			<div class="logo">
-				<img src="image/catalog/assets/logo.svg">
+				<a href="/">
+					<img src="image/catalog/assets/logo.svg">
+				</a>
 			</div>
 			<div class="right-group">
 				<img id="search-icon" src="image/catalog/assets/search.svg"/>
 				<div id="cart-button" class="cart-button">
-				<div id="cart-count-wrap">
-					<div id="cart-count">0</div>
+					<div id="cart-count-wrap">
+						<div id="cart-count">0</div>
 					</div>
-					<img height=25 src="image/catalog/assets/add_to_cart_ico.svg">
+					<img height="25" src="image/catalog/assets/add_to_cart_ico.svg">
 				</div>
 			</div>
 		</header>
@@ -108,7 +110,7 @@
 				</div>
 				<div class="right">
 					<div class="checkout">
-						<a href="/index.php?route=common/checkout">ZŁOŻ ZAMÓWIENIE</a>
+						<a href="/index.php?route=checkout/buy">ZŁOŻ ZAMÓWIENIE</a>
 					</div>
 				</div>
 
@@ -121,9 +123,6 @@
 				<ul>
 					<li>
 						<a href="index.php?route=common/shop">Sklep</a>
-					</li>
-					<li>
-						<a href="index.php?route=common/home">Główna</a>
 					</li>
 					<li>
 						<a href="/hurt">Hurtownia</a>

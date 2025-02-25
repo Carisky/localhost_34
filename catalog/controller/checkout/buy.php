@@ -1136,6 +1136,8 @@ class ControllerCheckoutBuy extends Controller {
 
 						'value'                   => $option['value'],
 
+						'thumb' 				  =>$this->model_tool_image->resize($option['image'], $this->config->get('theme_default_image_cart_width'), $this->config->get('theme_default_image_cart_height')),
+
 						'type'                    => $option['type']
 
 					);

@@ -597,3 +597,7 @@
 2025-02-19 20:37:22 - PHP Notice:  Error: Could not load template default/template/information/information! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37
 2025-02-22 21:48:24 - PHP Notice:  Error: Could not load template default/template/checkout/buy! in C:\OSPanel\domains\localhost\system\library\template\twig.php on line 37
 2025-02-22 22:03:35 - PHP Warning:  Undefined array key 1 in C:\OSPanel\domains\localhost\catalog\controller\checkout\buy.php on line 1439
+2025-02-22 22:57:54 - PHP Warning:  Undefined array key 5 in C:\OSPanel\domains\localhost\catalog\controller\extension\module\nr_wholesale.php on line 207
+2025-02-22 22:57:54 - PHP Warning:  Undefined array key 2 in C:\OSPanel\domains\localhost\catalog\controller\extension\module\nr_wholesale.php on line 208
+2025-02-22 22:57:54 - PHP Warning:  Undefined array key 1 in C:\OSPanel\domains\localhost\catalog\controller\extension\module\nr_wholesale.php on line 213
+2025-02-22 22:59:06 - PHP Warning:  Undefined array key 1 in C:\OSPanel\domains\localhost\catalog\controller\extension\module\nr_wholesale.php on line 214
